@@ -67,9 +67,13 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
                 viewHolder.ivFor.setVisibility(View.GONE);
             }
             try {
-                Utils.setRoundedImageUri(navigation.getMap(),context,viewHolder.ivMap);
+                if (navigation.getMap().equals("")) {
+                    viewHolder.ivMap.setImageDrawable(context.getResources().getDrawable(R.drawable.tunisia_map_one));
+                } else {
+                    Utils.setRoundedImageUri(navigation.getMap(),context,viewHolder.ivMap);
+                }
             } catch (Exception e) {
-                viewHolder.ivMap.setVisibility(View.GONE);
+                viewHolder.ivMap.setImageDrawable(context.getResources().getDrawable(R.drawable.tunisia_map_one));
             }
 
             try {
