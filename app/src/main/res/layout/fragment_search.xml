@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".drawers.SearchFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp">
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:id="@+id/iv_back"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_back_blue"
+        tools:ignore="ContentDescription" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_search"
+            android:hint="@string/search"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/shape_white_36dp_black_border"
+            tools:ignore="Autofill,RtlSymmetry" />
+    </LinearLayout>
+    <ProgressBar
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:id="@+id/progress_bar"
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/rvData"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -20,7 +20,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         android:id="@+id/layout_header"
         android:alpha="0.7" />
     <TextView
@@ -46,10 +46,9 @@
         android:layout_marginTop="30dp"
         android:textColor="@color/white"
         tools:ignore="HardcodedText" />
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:layout_width="100dp"
         android:layout_height="130dp"
-        android:src="@drawable/temp"
         android:id="@+id/tv_temp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="16dp"
@@ -59,7 +58,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="Partially couldy"
-
+        android:id="@+id/tv_cloud"
         android:layout_alignBottom="@+id/tv_temp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"

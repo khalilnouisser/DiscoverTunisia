@@ -4,16 +4,31 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+
 import com.bumptech.glide.Glide;
 import com.discover.tunisia.R;
+import com.google.gson.Gson;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.Objects;
 
 public class Utils {
+    public static final long TIMEOUT =  20;
+    private static Gson gson;
+    public static String key="5967dc48c5ac3da71cb8e816b5ab464c";
+    public static String query="Tunis";
+    public static Gson getGsonInstance() {
+        if (gson == null) {
+            gson = new Gson();
+        }
+        return gson;
+    }
+
     public static void changeStatusBarColors(Activity activity, int color) {
         try {
             Window window = activity.getWindow();
@@ -50,6 +65,19 @@ public class Utils {
 
                     .load(imageURL)
                     .into(roundedImageView);
+        }
+    }
+
+
+
+
+
+    public static void hideKeyboard(AppCompatActivity appCompatActivity) {
+        if (appCompatActivity != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) appCompatActivity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null && appCompatActivity.getCurrentFocus() != null) {
+                inputMethodManager.hideSoftInputFromWindow(appCompatActivity.getCurrentFocus().getWindowToken(), 0);
+            }
         }
     }
 }

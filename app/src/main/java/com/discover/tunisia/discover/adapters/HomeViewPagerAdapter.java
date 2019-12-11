@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.discover.tunisia.discover.fragments.HomeFragment;
+import com.discover.tunisia.navigations.NavigationFragment;
 import com.discover.tunisia.photos.PhotosFragmentFragment;
 
 public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -21,7 +22,7 @@ public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return HomeFragment.newInstance();
             case 1:
-                return PhotosFragmentFragment.newInstance();
+                return NavigationFragment.newInstance();
             case 2:
                 return PhotosFragmentFragment.newInstance();
             case 3:

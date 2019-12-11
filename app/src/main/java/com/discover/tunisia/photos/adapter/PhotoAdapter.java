@@ -1,6 +1,8 @@
 package com.discover.tunisia.photos.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.discover.tunisia.R;
+import com.discover.tunisia.activities.TransitionActivity;
+import com.discover.tunisia.config.Constante;
 import com.discover.tunisia.config.Utils;
 import com.discover.tunisia.photos.entities.Photo;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -42,6 +46,21 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
         {
             Utils.setRoundedImageUri(photo.getImage(),context,viewHolder.ivPhoto);
         }
+
+        viewHolder.itemView.setOnClickListener(v -> {
+            assert photo != null;
+            if(photo.getType().equalsIgnoreCase("image"))
+            {
+                Intent intent = new Intent(context, TransitionActivity.class);
+                intent.putExtra(Constante.ACTION,Constante.DETAILS_PHOTO_FRAGMENT);
+                intent.putExtra(Constante.PHOTO,photo);
+                context.startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(photo.getVideo_link()));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

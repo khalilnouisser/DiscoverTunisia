@@ -3,13 +3,15 @@ package com.discover.tunisia.discover.entities;
 import java.io.Serializable;
 
 public class Sejour implements Serializable {
-    private String title;
-    private String image;
+    private String id;
+    private String name;
+    private String thumbnail;
+    private String cover;
     private int resource;
 
     public Sejour(String title, String image, int resource) {
-        this.title = title;
-        this.image = image;
+        this.name = title;
+        this.thumbnail  = image;
         this.resource = resource;
     }
 
@@ -18,19 +20,19 @@ public class Sejour implements Serializable {
     }
 
     public String getTitle() {
-        return title;
+        return name;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.name = title;
     }
 
     public String getImage() {
-        return image;
+        return thumbnail ;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        this.thumbnail  = image;
     }
 
     public int getResource() {
@@ -39,5 +41,21 @@ public class Sejour implements Serializable {
 
     public void setResource(int resource) {
         this.resource = resource;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

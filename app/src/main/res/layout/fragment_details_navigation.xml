@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/tunisie"
+    tools:context=".navigations.NavigationFragment">
+  <ImageView
+      android:layout_width="24dp"
+      android:layout_height="24dp"
+      android:src="@drawable/ic_back"
+      android:layout_marginTop="30dp"
+      android:layout_marginStart="16dp"
+      android:id="@+id/iv_back"
+      tools:ignore="ContentDescription" />
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/inspring_logo"
+        tools:ignore="ContentDescription" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_navigation"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/iv_back" />
+
+</RelativeLayout>

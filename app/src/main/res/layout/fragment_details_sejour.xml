@@ -12,6 +12,7 @@
         android:layout_height="200dp"
         android:layout_width="match_parent"
         android:id="@+id/app_bar"
+
         >
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -21,6 +22,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
+
             app:expandedTitleMarginStart="48dp"
             app:expandedTitleMarginEnd="64dp">
 
@@ -28,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/plage"
+                android:scaleType="centerCrop"
                 android:id="@+id/iv_plage"/>
 
             <android.support.v7.widget.Toolbar
@@ -36,9 +39,9 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:layout_collapseMode="pin"
-                app:title="À la plage"
-                app:titleTextColor="@color/white"
+                app:subtitleTextColor="@color/colorPrimary"
                 />
+
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -56,72 +59,21 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingBottom="40dp">
-          <RelativeLayout
-              android:layout_width="match_parent"
-              android:layout_height="150dp"
-              >
-              <com.makeramen.roundedimageview.RoundedImageView
-                  android:layout_width="300dp"
-                  android:layout_height="match_parent"
-                  app:riv_corner_radius="6dp"
-                  android:src="@drawable/plage"
-                  android:layout_centerInParent="true"
-                  android:id="@+id/iv_tunis_tour"/>
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_centerInParent="true"
-                  android:textColor="@color/white"
-                  android:id="@+id/tv_plage_title"
-                  android:textStyle="bold"
-                  android:textSize="18sp"
-                  android:text="@string/tour_de_tunisie_des_plages"/>
-          </RelativeLayout>
-            <RelativeLayout
+
+            <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
-                >
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    app:riv_corner_radius="6dp"
-                    android:src="@drawable/soiree"
-                    android:layout_centerInParent="true"
-                    android:scaleType="centerCrop"
-                    android:id="@+id/iv_animation_no_stop"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:id="@+id/tv_soire_title"
-                    android:textSize="18sp"
-                    android:text="@string/animation_non_stop"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp">
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:layout_width="300dp"
-                    android:layout_centerInParent="true"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ile"
-                    app:riv_corner_radius="6dp"
-                    android:id="@+id/iv_ile"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:id="@+id/tv_ile_title"
-                    android:textSize="18sp"
-                    android:text="@string/les_les"/>
-            </RelativeLayout>
+                android:layout_height="match_parent"
+                android:id="@+id/rv_details_sejour"
+                android:nestedScrollingEnabled="false" />
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:id="@+id/tv_sejour_title"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
 </android.support.design.widget.CoordinatorLayout>

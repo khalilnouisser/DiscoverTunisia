@@ -4,24 +4,25 @@ import java.io.Serializable;
 
 public class Event implements Serializable {
 
-    private String title;
+    private String id;
+    private String name;
     private String description;
-    private String image;
+    private String thumbnail ;
     private String date;
 
     public Event(String title, String description, String image, String date) {
-        this.title = title;
+        this.name = title;
         this.description = description;
-        this.image = image;
+        this.thumbnail  = image;
         this.date = date;
     }
 
     public String getTitle() {
-        return title;
+        return name;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.name = title;
     }
 
     public String getDescription() {
@@ -33,11 +34,11 @@ public class Event implements Serializable {
     }
 
     public String getImage() {
-        return image;
+        return thumbnail ;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        this.thumbnail  = image;
     }
 
     public String getDate() {
@@ -46,5 +47,13 @@ public class Event implements Serializable {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

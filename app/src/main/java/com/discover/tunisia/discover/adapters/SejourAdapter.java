@@ -43,17 +43,14 @@ public class SejourAdapter extends RecyclerView.Adapter<SejourAdapter.ViewHolder
         final Sejour sejour = sejours.get(i);
         if (sejour != null) {
             viewHolder.tvTitle.setText(sejour.getTitle());
-            viewHolder.ivSejour.setBackgroundResource(sejour.getResource());
+            Utils.setRoundedImageUri(sejour.getImage(),context,viewHolder.ivSejour);
         }
 
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, TransitionActivity.class);
-                intent.putExtra(Constante.ACTION,Constante.DETAILS_SEJOUR_FRAGMENT);
-                intent.putExtra("sejour", sejour);
-                context.startActivity(intent);
-            }
+        viewHolder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, TransitionActivity.class);
+            intent.putExtra(Constante.ACTION,Constante.DETAILS_SEJOUR_FRAGMENT);
+            intent.putExtra("sejour", sejour);
+            context.startActivity(intent);
         });
     }
 

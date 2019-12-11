@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.discover.tunisia.R;
 import com.discover.tunisia.config.Constante;
 import com.discover.tunisia.config.Utils;
+import com.discover.tunisia.discover.entities.DetailsSejour;
 import com.discover.tunisia.discover.entities.Sejour;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -45,16 +46,16 @@ public class OneSejourFragment extends Fragment {
     @BindView(R.id.tv_description)
     TextView tvDescription;
     Unbinder unbinder;
-    private Sejour sejour;
+    private DetailsSejour sejour;
 
     public OneSejourFragment() {
         // Required empty public constructor
     }
 
 
-    public static Fragment newInstance(Sejour sejour) {
+    public static Fragment newInstance(DetailsSejour sejour) {
         Bundle args = new Bundle();
-        args.putSerializable(Constante.SEJOUR, (Serializable) sejour);
+        args.putSerializable(Constante.DETAILS_SEJOUR, (Serializable) sejour);
         OneSejourFragment fragment = new OneSejourFragment();
         fragment.setArguments(args);
         return fragment;
@@ -66,7 +67,7 @@ public class OneSejourFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_one_sejour, container, false);
         unbinder = ButterKnife.bind(this, view);
         assert this.getArguments() != null;
-        sejour = (Sejour) this.getArguments().getSerializable(Constante.SEJOUR);
+        sejour = (DetailsSejour) this.getArguments().getSerializable(Constante.DETAILS_SEJOUR);
         if(sejour!=null)
         {
             initSejour(sejour);
@@ -77,7 +78,7 @@ public class OneSejourFragment extends Fragment {
 
     private void iniToolBar() {
         // toolbar
-        toolbar.setTitle(sejour.getTitle());
+        toolbar.setTitle(sejour.getName());
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +102,9 @@ public class OneSejourFragment extends Fragment {
 
     }
 
-    private void initSejour(Sejour sejour) {
-        Utils.setRoundedImageUri(sejour.getImage(),getContext(),ivPlage);
+    private void initSejour(DetailsSejour sejour) {
+        Utils.setRoundedImageUri(sejour.getThumbnail(),getContext(),ivPlage);
+        tvDescription.setText(sejour.getDescription());
 
     }
 

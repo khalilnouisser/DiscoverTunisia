@@ -1,12 +1,14 @@
 package com.discover.tunisia.discover.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,29 +17,43 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.discover.tunisia.R;
+import com.discover.tunisia.config.Utils;
 import com.discover.tunisia.discover.adapters.ALaUneAdapter;
 import com.discover.tunisia.discover.adapters.IncontournableAdapter;
 import com.discover.tunisia.discover.adapters.SejourAdapter;
 import com.discover.tunisia.discover.entities.Event;
 import com.discover.tunisia.discover.entities.Incontournable;
 import com.discover.tunisia.discover.entities.Sejour;
+import com.discover.tunisia.discover.entities.Weither;
+import com.discover.tunisia.services.RetrofitServiceFacotry;
+import com.google.gson.Gson;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
 
-    List<Event> events = new ArrayList<>();
-    List<Sejour> sejours = new ArrayList<>();
-    List<Incontournable> incontournables = new ArrayList<>();
     View view;
     @BindView(R.id.tv_tunisia)
     RoundedImageView tvTunisia;
@@ -48,7 +64,7 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.tv_annotation_date)
     TextView tvAnnotationDate;
     @BindView(R.id.tv_temp)
-    ImageView tvTemp;
+    RoundedImageView tvTemp;
     @BindView(R.id.iv_pin)
     ImageView ivPin;
     @BindView(R.id.tv_region_name)
@@ -68,6 +84,8 @@ public class HomeFragment extends Fragment {
     TextView tvIncontournables;
     @BindView(R.id.rv_incontournables)
     RecyclerView rvIncontournables;
+    @BindView(R.id.tv_cloud)
+    TextView tvCloud;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -83,28 +101,168 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, view);
+        initWeither();
         initEvents();
         initSerjour();
         initIncontournable();
         return view;
     }
 
+    private void initWeither() {
+        Call<ResponseBody> call = RetrofitServiceFacotry.getWeitherApiClient().getWeither(Utils.key, Utils.query);
+        call.enqueue(new Callback<ResponseBody>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                if (response.code() == 200) {
+                    try {
+                        assert response.body() != null;
+                        JSONObject object = new JSONObject(response.body().string());
+                        Gson gson = Utils.getGsonInstance();
+                        Weither weither = gson.fromJson(object.toString(), Weither.class);
+                        if (weither.getLocation().getName() != null) {
+                            tvRegionName.setText(weither.getLocation().getName());
+                        }
+                        if (weither.getCurrent().getWeather_descriptions() != null) {
+                            tvCloud.setText(weither.getCurrent().getWeather_descriptions().get(0));
+                        }
+                        int resource = R.drawable._001_rain_3;
+
+                        if(weither.getCurrent().getWeather_code()==113)
+                        {
+                        resource = R.drawable._006_sun;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 116 ||
+                                weither.getCurrent().getWeather_code() == 143 ||
+                                weither.getCurrent().getWeather_code() == 248)
+                        {
+                        resource = R.drawable._009_cloudy_day_1;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 119 ||
+                                weither.getCurrent().getWeather_code() == 122 ||
+                                weither.getCurrent().getWeather_code() == 263 ||
+                                weither.getCurrent().getWeather_code() == 266)
+                        {
+
+                            resource = R.drawable._029_cloudy_day;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 176)
+                        {
+                            resource = R.drawable._015_rain_1;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 179 ||
+                                weither.getCurrent().getWeather_code() == 185 ||
+                                weither.getCurrent().getWeather_code() == 227 ||
+                                weither.getCurrent().getWeather_code() == 260 ||
+                                weither.getCurrent().getWeather_code() == 293 )
+                        {
+                            resource = R.drawable._013_snowing_1;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 182 ||
+                                weither.getCurrent().getWeather_code() == 281)
+                        {
+                            resource = R.drawable._012_snowing_2;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 200)
+                        {
+                            resource = R.drawable._002_storm_2;
+                        }
+
+                        else if(weither.getCurrent().getWeather_code() == 230 ||
+                                weither.getCurrent().getWeather_code() == 284 ||
+                                weither.getCurrent().getWeather_code() == 299 ||
+                                weither.getCurrent().getWeather_code() == 302)
+                        {
+                            resource = R.drawable._003_storm_1;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 296)
+                        {
+                            resource = R.drawable._015_rain_1;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 305 ||
+                                weither.getCurrent().getWeather_code() == 308)
+                        {
+                            resource = R.drawable._002_storm_2;
+                        }
+                        else if(weither.getCurrent().getWeather_code() == 311)
+                        {
+                            resource = R.drawable._011_snowing_3;
+                        }
+                        try {
+                            tvTemp.setImageResource(resource);
+                        }catch (Exception ignored)
+                        {
+
+                        }
+                        if(weither.getRequest().getType()!=null)
+                        {
+                            tvRegionDescription.setText(weither.getRequest().getType());
+                        }
+                        if(weither.getLocation().getLocaltime()!=null)
+                        {
+                            @SuppressLint("SimpleDateFormat") SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
+                            Date date;
+                            try {
+                                date =  dateformat.parse(weither.getLocation().getLocaltime());
+                                @SuppressLint("SimpleDateFormat") DateFormat dayFormate=new SimpleDateFormat("EEEE");
+                                String dayFromDate=dayFormate.format(date);
+                                String day = (String) android.text.format.DateFormat.format("dd", date);
+                                Log.d("asd", "----------:: "+dayFromDate);
+                                tvDate.setText(dayFromDate+" "+day);
+
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+
+            }
+        });
+    }
+
     private void initEvents() {
-        Event event_1 = new Event("Festival du miel de Sidi Alouane",
-                "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.\n" +
-                        "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.\n" +
-                        "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.\n" +
-                        "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.\n" +
-                        "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.",
-                "https://onqor.co.uk/wp-content/uploads/2019/03/Events-1200x630.jpg", "Octobre 27, 13:00");
-        Event event_2 = new Event("les dunes electroniques", "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.", "https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2016/12/16131147/future-phone-mobile-live-events-technology-trends.png", "Octobre 27, 13:00");
-        Event event_3 = new Event("Festival du miel de Sidi Alouane", "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.", "https://i.vimeocdn.com/video/685774105.webp?mw=1000&mh=563&q=70", "Octobre 27, 13:00");
-        Event event_4 = new Event("les dunes electroniques", "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.", "https://technext.github.io/Evento/images/demo/bg-slide-01.jpg", "Octobre 27, 13:00");
-        events.add(event_1);
-        events.add(event_2);
-        events.add(event_3);
-        events.add(event_4);
-        initEventAdapter(events);
+        Call<ResponseBody> call = RetrofitServiceFacotry.getServiceApiClient().getEvent();
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+
+                if (response.code() == 200) {
+                    try {
+                        assert response.body() != null;
+                        JSONObject object = new JSONObject(response.body().string());
+                        JSONArray array = object.optJSONArray("data");
+                        if (array != null) {
+                            Gson gson = Utils.getGsonInstance();
+                            List<Event> events = new ArrayList<>();
+                            for (int i = 0; i < array.length(); i++) {
+                                Event event = gson.fromJson(array.get(i).toString(), Event.class);
+                                events.add(event);
+                            }
+                            initEventAdapter(events);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+
+            }
+        });
     }
 
     private void initEventAdapter(List<Event> events) {
@@ -114,25 +272,38 @@ public class HomeFragment extends Fragment {
     }
 
     private void initSerjour() {
-        Sejour sejour_1 = new Sejour("À la plage", "https://ibb.co/GMWCQ5j", R.drawable.sejour1);
-        Sejour sejour_2 = new Sejour("BIEN-ËTRE", "", R.drawable.sejour2);
-        Sejour sejour_3 = new Sejour("ARTISANAR", "", R.drawable.sejour3);
-        Sejour sejour_4 = new Sejour("CULTURE", "", R.drawable.sejour4);
-        Sejour sejour_5 = new Sejour("SAVEURS", "", R.drawable.sejour5);
-        Sejour sejour_6 = new Sejour("SENIORS", "", R.drawable.sejour6);
-        Sejour sejour_7 = new Sejour("SAHARA", "", R.drawable.sejour7);
-        Sejour sejour_8 = new Sejour("ACTIVITÉs", "", R.drawable.sejour8);
-        Sejour sejour_9 = new Sejour("INCENTIVES", "", R.drawable.sejour9);
-        sejours.add(sejour_1);
-        sejours.add(sejour_2);
-        sejours.add(sejour_3);
-        sejours.add(sejour_4);
-        sejours.add(sejour_5);
-        sejours.add(sejour_6);
-        sejours.add(sejour_7);
-        sejours.add(sejour_8);
-        sejours.add(sejour_9);
-        initSerjourAdapter(sejours);
+        Call<ResponseBody> call = RetrofitServiceFacotry.getServiceApiClient().getSejour();
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                if (response.code() == 200) {
+                    try {
+                        assert response.body() != null;
+                        JSONObject object = new JSONObject(response.body().string());
+                        JSONArray array = object.optJSONArray("data");
+                        if (array != null) {
+                            Gson gson = Utils.getGsonInstance();
+                            List<Sejour> sejours = new ArrayList<>();
+                            for (int i = 0; i < array.length(); i++) {
+                                Sejour sejour = gson.fromJson(array.get(i).toString(), Sejour.class);
+                                sejours.add(sejour);
+                            }
+                            initSerjourAdapter(sejours);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+
+            }
+        });
+
     }
 
     private void initSerjourAdapter(List<Sejour> sejours) {
@@ -144,19 +315,42 @@ public class HomeFragment extends Fragment {
 
 
     private void initIncontournable() {
-        Incontournable incontournable_1 = new Incontournable("","https://onqor.co.uk/wp-content/uploads/2019/03/Events-1200x630.jpg");
-        Incontournable incontournable_2 = new Incontournable("","https://onqor.co.uk/wp-content/uploads/2019/03/Events-1200x630.jpg");
-        Incontournable incontournable_3 = new Incontournable("","https://onqor.co.uk/wp-content/uploads/2019/03/Events-1200x630.jpg");
-        Incontournable incontournable_4 = new Incontournable("","https://onqor.co.uk/wp-content/uploads/2019/03/Events-1200x630.jpg");
-        incontournables.add(incontournable_1);
-        incontournables.add(incontournable_2);
-        incontournables.add(incontournable_3);
-        incontournables.add(incontournable_4);
-        initIncontournableAdapter(incontournables);
+        Call<ResponseBody> call = RetrofitServiceFacotry.getServiceApiClient().getIncontournable();
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+
+                if (response.code() == 200) {
+                    try {
+                        assert response.body() != null;
+                        JSONObject object = new JSONObject(response.body().string());
+                        JSONArray array = object.optJSONArray("data");
+                        if (array != null) {
+                            Gson gson = Utils.getGsonInstance();
+                            List<Incontournable> incontournables = new ArrayList<>();
+                            for (int i = 0; i < array.length(); i++) {
+                                Incontournable incontournable = gson.fromJson(array.get(i).toString(), Incontournable.class);
+                                incontournables.add(incontournable);
+                            }
+                            initIncontournableAdapter(incontournables);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+
+            }
+        });
     }
 
     private void initIncontournableAdapter(List<Incontournable> incontournables) {
-        IncontournableAdapter adapter = new IncontournableAdapter(getContext(),incontournables);
+        IncontournableAdapter adapter = new IncontournableAdapter(getContext(), incontournables);
         rvIncontournables.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rvIncontournables.setAdapter(adapter);
     }
