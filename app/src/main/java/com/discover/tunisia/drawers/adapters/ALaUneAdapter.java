@@ -50,7 +50,7 @@ public class ALaUneAdapter extends RecyclerView.Adapter<ALaUneAdapter.ViewHolder
         }
 
         try {
-            viewHolder.tvDescription.setText(event.getDate());
+            viewHolder.tvDescription.setText(event.getDate().substring(0, 46));
         } catch (Exception e) {
             e.printStackTrace();
         }
