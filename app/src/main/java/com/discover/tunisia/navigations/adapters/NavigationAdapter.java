@@ -46,6 +46,11 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         if(navigation!=null)
         {
             try {
+                Utils.setRoundedImageUri(navigation.getResource_one(),context,viewHolder.ivBackground);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
                 Utils.setRoundedImageUri(navigation.getResource_one(),context,viewHolder.ivOne);
             } catch (Exception e) {
                 viewHolder.ivOne.setVisibility(View.GONE);
@@ -106,6 +111,8 @@ public class NavigationAdapter extends RecyclerView.Adapter<NavigationAdapter.Vi
         TextView tvTitle;
         @BindView(R.id.iv_one)
         RoundedImageView ivOne;
+        @BindView(R.id.iv_background)
+        RoundedImageView ivBackground;
         @BindView(R.id.iv_two)
         RoundedImageView ivTwo;
         @BindView(R.id.iv_three)

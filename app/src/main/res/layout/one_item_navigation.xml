@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
     android:orientation="vertical">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/iv_background"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:alpha="0.5" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="72dp"
+        android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,13 +33,15 @@
         android:id="@+id/tv_title"
         android:textAllCaps="true"
         android:layout_marginBottom="15dp"
-        android:layout_marginTop="10dp"
+
         android:textColor="@color/secondColor"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/layout_images"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_below="@+id/tv_title">
         <com.makeramen.roundedimageview.RoundedImageView
             android:layout_width="100dp"
@@ -71,6 +88,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:layout_below="@id/layout_images"
         android:layout_marginTop="20dp"
         android:id="@+id/tv_description"
@@ -97,4 +116,5 @@
         android:id="@+id/tv_discover"
         android:layout_marginTop="50dp"
         tools:ignore="UnusedAttribute" />
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
