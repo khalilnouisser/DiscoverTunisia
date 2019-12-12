@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Discover</string>
     <string name="facebook_app_id">625561951606349</string>
+    <string name="fb_login_protocol_scheme">fb625561951606349</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

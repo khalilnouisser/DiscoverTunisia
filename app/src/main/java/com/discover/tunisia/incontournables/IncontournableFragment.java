@@ -140,23 +140,37 @@ public class IncontournableFragment extends Fragment {
 
 
         try {
-            Thread thread = new Thread(new Runnable() {
+            Thread thread = new Thread(() -> {
+                try  {
+                    URL url = new URL(incontournable.getImage());
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Drawable image = null;
+                    try {
+                        image = new BitmapDrawable(Objects.requireNonNull(getContext()).getResources(), bitmap);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
-                @Override
-                public void run() {
-                    try  {
-                        URL url = new URL(incontournable.getImage());
-                        Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-                        Drawable image = new BitmapDrawable(Objects.requireNonNull(getContext()).getResources(), bitmap);
-
+                    try {
                         rvIncontournables.setBackground(image);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             });
 
-            thread.start();
+            try {
+                thread.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }catch (Exception e)
         {

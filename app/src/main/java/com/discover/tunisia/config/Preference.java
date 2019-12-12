@@ -9,6 +9,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 
 public class Preference {
+
     public static User getCurrentCompte(Context context) {
         try {
             if (context != null) {
@@ -43,8 +44,44 @@ public class Preference {
                 editor.apply();
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());        }
+            System.out.println(e.getMessage());
+        }
     }
+
+    public static void saveViewTuto(Context context,boolean hasView)
+    {
+        try {
+            if (context != null) {
+
+                SharedPreferences preferences = PreferenceManager
+                        .getDefaultSharedPreferences(context);
+                SharedPreferences.Editor editor = preferences.edit();
+                try {
+                    editor.putBoolean("tuto", hasView);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                editor.apply();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static boolean hasViewTuto(Context context) {
+        try {
+            if (context != null) {
+                SharedPreferences preferences = PreferenceManager
+                        .getDefaultSharedPreferences(context);
+                return  preferences.getBoolean("tuto", false);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
 
     public static void logout(Context context) {
 

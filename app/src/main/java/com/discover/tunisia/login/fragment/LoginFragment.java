@@ -105,6 +105,7 @@ public class LoginFragment extends Fragment {
     private CallbackManager callbackManager;
     private LoginButton loginButton;
     List<Langue> langues = new ArrayList<>();
+    User user = new User();
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -147,7 +148,15 @@ public class LoginFragment extends Fragment {
             startActivity(intent);
             Objects.requireNonNull(getActivity()).finish();
         } else {
-            setupViewPager();
+            if(!Preference.hasViewTuto(getContext()))
+            {
+                setupViewPager();
+            }else {
+                pager.setVisibility(View.GONE);
+                tabDots.setVisibility(View.GONE);
+                layoutLogin.setVisibility(View.VISIBLE);
+            }
+            //setupViewPager();
             initLogin();
             initializeLoginFacebook(loginButton, this, callbackManager);
         }
@@ -172,7 +181,8 @@ public class LoginFragment extends Fragment {
 
         }
         try {
-            layoutFacebook.setOnClickListener(v -> loginButton.performClick());
+            layoutFacebook.setOnClickListener(v ->
+                    loginButton.performClick());
         } catch (Exception ignored) {
 
         }
@@ -323,6 +333,7 @@ public class LoginFragment extends Fragment {
                 pager.setVisibility(View.GONE);
                 tabDots.setVisibility(View.GONE);
                 layoutLogin.setVisibility(View.VISIBLE);
+                Preference.saveViewTuto(getContext(),true);
             }
         });
     }
@@ -343,11 +354,24 @@ public class LoginFragment extends Fragment {
                             final JsonObject params = new JsonObject();
                             final JSONObject jsonObject = response.getJSONObject();
                             if (jsonObject != null) {
-                                params.addProperty("email", jsonObject.optString("email"));
-                                params.addProperty("fullName", jsonObject.optString("first_name") + " " + jsonObject.optString("last_name"));
+                                try {
+                                    params.addProperty("email", jsonObject.optString("email"));
+                                    user.setEmail(jsonObject.optString("email"));
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                try {
+                                    params.addProperty("fullName", jsonObject.optString("first_name") + " " + jsonObject.optString("last_name"));
+                                    user.setName(jsonObject.optString("first_name") + " " + jsonObject.optString("last_name"));
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
                                 try {
                                     String picture = jsonObject.optJSONObject("picture").optJSONObject("data").optString("url");
                                     params.addProperty("avatar", picture);
+                                    user.setAvatar(picture);
                                 } catch (Exception e) {
                                     params.addProperty("image", "");
                                 }
@@ -410,10 +434,23 @@ public class LoginFragment extends Fragment {
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.code() == 200) {
                     try {
+
                         assert response.body() != null;
                         JSONArray object = new JSONArray(response.body().string());
-                        Gson gson = Utils.getGsonInstance();
-                        User user = gson.fromJson(object.get(0).toString(), User.class);
+                        try {
+                            response.body().string();
+                            if(response.body().string().isEmpty())
+                            {
+
+                            }
+                            else {
+                                Gson gson = Utils.getGsonInstance();
+                                user = gson.fromJson(object.get(0).toString(), User.class);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        if(user!=null)
                         Preference.saveInPreferences(getContext(), user);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -450,6 +487,13 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

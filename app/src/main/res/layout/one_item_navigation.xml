@@ -95,5 +95,6 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:id="@+id/tv_discover"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        tools:ignore="UnusedAttribute" />
 </LinearLayout>

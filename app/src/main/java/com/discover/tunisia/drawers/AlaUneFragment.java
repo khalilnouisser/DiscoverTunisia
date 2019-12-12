@@ -13,8 +13,9 @@ import android.widget.ImageView;
 
 import com.discover.tunisia.R;
 import com.discover.tunisia.config.Utils;
-import com.discover.tunisia.discover.adapters.ALaUneAdapter;
+
 import com.discover.tunisia.discover.entities.Event;
+import com.discover.tunisia.drawers.adapters.ALaUneAdapter;
 import com.discover.tunisia.services.RetrofitServiceFacotry;
 import com.google.gson.Gson;
 

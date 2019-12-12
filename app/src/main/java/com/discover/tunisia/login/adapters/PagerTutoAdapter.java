@@ -19,7 +19,7 @@ public class PagerTutoAdapter extends PagerAdapter {
     Context context;
     public static OnNextistener mListener;
     private int[] GalImages = new int[]{
-            R.drawable.tuto_one,
+            R.drawable.tuto_two,
             R.drawable.tuto_two,
             R.drawable.tuto_three
     };
