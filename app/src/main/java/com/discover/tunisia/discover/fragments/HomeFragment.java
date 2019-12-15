@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.discover.tunisia.R;
+import com.discover.tunisia.config.Preference;
 import com.discover.tunisia.config.Utils;
 import com.discover.tunisia.discover.adapters.ALaUneAdapter;
 import com.discover.tunisia.discover.adapters.IncontournableAdapter;
@@ -40,6 +41,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -207,7 +209,6 @@ public class HomeFragment extends Fragment {
                                 @SuppressLint("SimpleDateFormat") DateFormat dayFormate=new SimpleDateFormat("EEEE");
                                 String dayFromDate=dayFormate.format(date);
                                 String day = (String) android.text.format.DateFormat.format("dd", date);
-                                Log.d("asd", "----------:: "+dayFromDate);
                                 tvDate.setText(dayFromDate+" "+day);
 
                             } catch (ParseException e) {
@@ -229,7 +230,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void initEvents() {
-        Call<ResponseBody> call = RetrofitServiceFacotry.getServiceApiClient().getEvent();
+        Call<ResponseBody> call = null;
+        if(Preference.getCurrentCompte(getContext())!=null)
+        {
+            call = RetrofitServiceFacotry.getServiceApiClient().getEvent(Integer.parseInt(Objects.requireNonNull(Preference.getCurrentCompte(getContext())).getId()));
+        }
+        else call = RetrofitServiceFacotry.getServiceApiClient().getEvent();
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {

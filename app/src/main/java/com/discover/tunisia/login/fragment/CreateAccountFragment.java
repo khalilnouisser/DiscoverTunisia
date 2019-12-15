@@ -16,11 +16,14 @@ import android.widget.TextView;
 
 import com.discover.tunisia.R;
 import com.discover.tunisia.config.Preference;
+import com.discover.tunisia.config.Utils;
 import com.discover.tunisia.discover.MainActivity;
 import com.discover.tunisia.login.entities.User;
 import com.discover.tunisia.services.RetrofitServiceFacotry;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -144,7 +147,10 @@ public class CreateAccountFragment extends Fragment {
                 if (response.code() == 200) {
                     try {
                         assert response.body() != null;
-                        JSONObject object = new JSONObject(response.body().string());
+                        JSONArray object = new JSONArray(response.body().string());
+                        Gson gson = Utils.getGsonInstance();
+                        User user = gson.fromJson(object.get(0).toString(), User.class);
+                        Preference.saveInPreferences(getContext(), user);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {

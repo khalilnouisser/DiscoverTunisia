@@ -8,7 +8,7 @@
     tools:context=".navigations.NavigationFragment">
 
 
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv_navigation"
@@ -28,5 +28,6 @@
       android:layout_height="50dp"
       android:layout_marginTop="14dp"
       android:layout_centerHorizontal="true"
+      android:src="@drawable/inspring_logo"
       tools:ignore="ContentDescription" />
 </RelativeLayout>

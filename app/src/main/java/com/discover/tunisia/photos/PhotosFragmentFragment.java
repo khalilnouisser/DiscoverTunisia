@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.discover.tunisia.R;
+import com.discover.tunisia.config.Preference;
 import com.discover.tunisia.config.Utils;
-import com.discover.tunisia.navigations.entities.Navigation;
 import com.discover.tunisia.photos.adapter.PhotoAdapter;
 import com.discover.tunisia.photos.entities.Photo;
 import com.discover.tunisia.services.RetrofitServiceFacotry;
@@ -24,6 +24,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,7 +59,12 @@ public class PhotosFragmentFragment extends Fragment {
     }
 
     private void getData() {
-        Call<ResponseBody> call = RetrofitServiceFacotry.getServiceApiClient().getPhotos();
+        Call<ResponseBody> call = null;
+        if(Preference.getCurrentCompte(getContext())!=null)
+        {
+            call = RetrofitServiceFacotry.getServiceApiClient().getPhotos(Integer.parseInt(Objects.requireNonNull(Preference.getCurrentCompte(getContext())).getId()));
+        }
+        else call = RetrofitServiceFacotry.getServiceApiClient().getPhotos();
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {

@@ -18,6 +18,9 @@ public interface ServiceApiClient {
     @GET("event/read.php")
     Call<ResponseBody> getEvent();
 
+    @GET("event/read.php")
+    Call<ResponseBody> getEvent(@Query("user_id") int user_id);
+
     @GET("monsejour/read.php")
     Call<ResponseBody> getSejour();
 
@@ -36,6 +39,9 @@ public interface ServiceApiClient {
     @GET("gallery/read_gallery.php")
     Call<ResponseBody> getPhotos();
 
+    @GET("gallery/read_gallery.php")
+    Call<ResponseBody> getPhotos(@Query("user_id") int user_id);
+
     @POST("user/create.php")
     Call<ResponseBody> createAccount(@Body JsonObject object);
 
@@ -44,6 +50,12 @@ public interface ServiceApiClient {
 
     @POST("user/connexion_facebook.php")
     Call<ResponseBody> loginFacebook(@Body JsonObject object);
+
+    @POST("favoris/create.php")
+    Call<ResponseBody> createFavorite(@Body JsonObject object);
+
+    @GET("favoris/read_by_user.php")
+    Call<ResponseBody> getFavorite(@Query("id") int id);
 
     @GET("actualites/read.php")
     Call<ResponseBody> getNews();
@@ -56,4 +68,7 @@ public interface ServiceApiClient {
 
     @GET("calendar/read.php")
     Call<ListResponse<Event>> getCalendar();
+
+    @GET("region/read.php")
+    Call<ResponseBody> getGeofence();
 }

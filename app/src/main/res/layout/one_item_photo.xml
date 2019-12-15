@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
     android:layout_marginBottom="10dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginEnd="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <com.makeramen.roundedimageview.RoundedImageView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    app:layout_constraintDimensionRatio="1:1"
+    android:layout_width="140dp"
+    android:layout_height="140dp"
     app:riv_corner_radius="9dp"
     android:elevation="4dp"
     android:scaleType="centerCrop"
     android:id="@+id/iv_photo"/>
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="28dp"
+        android:layout_alignParentEnd="true"
+        android:elevation="6dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_bookmark_disabled"
+        android:id="@+id/src_bookmark"
+        tools:ignore="ContentDescription" />
+</RelativeLayout>
