@@ -32,11 +32,12 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/shape_white_raduis_6dp"
+                android:background="@drawable/shape_blue_light_border_5dp"
                 android:gravity="center_vertical"
+                android:textColor="@color/black"
                 android:paddingStart="16dp"
                 android:textStyle="bold"
-                android:visibility="gone"
+                android:visibility="visible"
                 tools:text="Saint silvestre" />
 
             <LinearLayout
@@ -71,7 +72,7 @@
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
-                        android:src="@drawable/ic_map" />
+                        android:src="@drawable/ic_police" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -103,7 +104,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
                         android:layout_marginEnd="16dp"
-                        android:src="@drawable/ic_map"
+                        android:src="@drawable/ic_phone_call_green"
                         android:tint="@color/colorPrimary" />
                 </RelativeLayout>
 
@@ -121,7 +122,7 @@
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
-                        android:src="@drawable/ic_map" />
+                        android:src="@drawable/ic_ambulance" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -153,7 +154,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
                         android:layout_marginEnd="16dp"
-                        android:src="@drawable/ic_map"
+                        android:src="@drawable/ic_phone_call_green"
                         android:tint="@color/colorPrimary" />
                 </RelativeLayout>
 
@@ -172,7 +173,7 @@
                         android:layout_height="30dp"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
-                        android:src="@drawable/ic_map" />
+                        android:src="@drawable/ic_taxi" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -204,7 +205,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
                         android:layout_marginEnd="16dp"
-                        android:src="@drawable/ic_map"
+                        android:src="@drawable/ic_phone_call_green"
                         android:tint="@color/colorPrimary" />
                 </RelativeLayout>
             </LinearLayout>

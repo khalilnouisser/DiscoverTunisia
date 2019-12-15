@@ -111,7 +111,7 @@ public class CalendarFragment extends Fragment {
             public void onResponse(Call<ListResponse<Event>> call, Response<ListResponse<Event>> response) {
                 try {
                     final ArrayList<CalendarDay> dates = new ArrayList<>();
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                     for (Event event : response.body().getData()) {
                         final CalendarDay day = CalendarDay.from(simpleDateFormat.parse(event.getDate()));
                         dates.add(day);
