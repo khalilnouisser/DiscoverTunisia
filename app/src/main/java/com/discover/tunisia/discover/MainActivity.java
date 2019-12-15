@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivMenu;
     @BindView(R.id.iv_search)
     ImageView ivSearch;
+    @BindView(R.id.iv_map)
+    ImageView ivMap;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView bottomNavigation;
     @BindView(R.id.iv_close)
@@ -204,6 +206,12 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(Constante.ACTION, Constante.SEARCH);
             startActivity(intent);
         });
+
+        ivMap.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, TransitionActivity.class);
+            intent.putExtra(Constante.ACTION, Constante.MAP);
+            startActivity(intent);
+        });
         try {
             layoutSelectLanguage.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -336,7 +344,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_info:
                         item.setIcon(R.drawable.info);
-                        viewpager.setCurrentItem(0);
+                        viewpager.setCurrentItem(3);
                         break;
                 }
                 return true;

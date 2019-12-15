@@ -1,5 +1,8 @@
 package com.discover.tunisia.services;
 
+import com.discover.tunisia.discover.entities.Event;
+import com.discover.tunisia.discover.entities.ListResponse;
+import com.discover.tunisia.discover.entities.Place;
 import com.google.gson.JsonObject;
 
 import okhttp3.ResponseBody;
@@ -47,4 +50,10 @@ public interface ServiceApiClient {
 
     @GET("search/search.php")
     Call<ResponseBody> search(@Query("keyword") String keyword);
+
+    @GET("place/read.php")
+    Call<ListResponse<Place>> getMap();
+
+    @GET("calendar/read.php")
+    Call<ListResponse<Event>> getCalendar();
 }

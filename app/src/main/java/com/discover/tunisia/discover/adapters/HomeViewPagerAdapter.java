@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.discover.tunisia.discover.fragments.CalendarFragment;
 import com.discover.tunisia.discover.fragments.HomeFragment;
 import com.discover.tunisia.navigations.NavigationFragment;
 import com.discover.tunisia.photos.PhotosFragmentFragment;
@@ -26,7 +27,7 @@ public class HomeViewPagerAdapter extends FragmentStatePagerAdapter {
             case 2:
                 return PhotosFragmentFragment.newInstance();
             case 3:
-                return HomeFragment.newInstance();
+                return CalendarFragment.newInstance();
             default:
                 return HomeFragment.newInstance();
         }

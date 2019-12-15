@@ -22,11 +22,11 @@
       android:layout_marginStart="16dp"
       android:id="@+id/iv_back"
       tools:ignore="ContentDescription" />
+
   <ImageView
       android:layout_width="100dp"
       android:layout_height="50dp"
       android:layout_marginTop="14dp"
       android:layout_centerHorizontal="true"
-      android:src="@drawable/white_logo"
       tools:ignore="ContentDescription" />
 </RelativeLayout>

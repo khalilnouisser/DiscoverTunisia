@@ -215,9 +215,7 @@ public class HomeFragment extends Fragment {
                             }
 
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }

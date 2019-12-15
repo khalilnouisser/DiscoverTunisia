@@ -2,6 +2,7 @@ package com.discover.tunisia.config;
 
 public class Constante {
     public static final String USER = "user" ;
+
     public static String EVENT ="event";
     public static String SEJOUR ="sejour";
     public static String PHOTO ="photo";
@@ -20,6 +21,7 @@ public class Constante {
     public static int AllIncontournableFragment = 10;
     public static int NewsFragment = 11;
     public static int SEARCH = 12;
+    public static int  MAP = 13;
 
 
 }
