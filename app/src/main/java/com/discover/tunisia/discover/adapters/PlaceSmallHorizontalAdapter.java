@@ -47,7 +47,7 @@ public class PlaceSmallHorizontalAdapter extends RecyclerView.Adapter<PlaceSmall
 
         try {
             Place place = places.get(i);
-            viewHolder.rbPlace.setNumStars(Integer.parseInt(place.getStars()));
+            viewHolder.rbPlace.setRating(Integer.parseInt(place.getStars()));
             viewHolder.tvPlace.setText(place.getName());
             viewHolder.tvPlaceDesc.setText(place.getDescription());
         } catch (Exception e) {

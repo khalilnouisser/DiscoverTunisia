@@ -111,7 +111,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void initWeither() {
-        Call<ResponseBody> call = RetrofitServiceFacotry.getWeitherApiClient().getWeither(Utils.key, Utils.query);
+        String key = Utils.getWatherKey();
+        Call<ResponseBody> call = RetrofitServiceFacotry.getWeitherApiClient().getWeither(key, Utils.query);
         call.enqueue(new Callback<ResponseBody>() {
             @SuppressLint("SetTextI18n")
             @Override
