@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Discover</string>
-    <string name="facebook_app_id" translatable="false">625561951606349</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb625561951606349</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="true">Hello blank fragment</string>
     <string name="email" translatable="true">Email</string>
     <string name="hiden_password" translatable="true">*******</string>
@@ -44,5 +40,5 @@
     <string name="videos" translatable="true">Videos</string>
     <string name="visit_virtuel" translatable="true">Virtual visit</string>
     <string name="empty_data" translatable="true">Empty data</string>
-    <string name="connect" translatable="true">Connect</string>
+    <string name="connect"> Connect </string>
 </resources>

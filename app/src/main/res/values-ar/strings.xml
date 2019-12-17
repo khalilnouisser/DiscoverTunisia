@@ -1,0 +1,85 @@
+<resources>
+        
+    <string name="app_name"> اكتشف </string>
+        
+    <string name="hello_blank_fragment"> مرحبًا ، جزء فارغ </string>
+        
+    <string name="email"> البريد الإلكتروني </string>
+        
+    <string name="hiden_password"> ******* </string>
+        
+    <string name="forget_yout_password"> هل نسيت كلمة المرور؟ </string>
+        
+    <string name="sign_in"> تسجيل الدخول </string>
+        
+    <string name="continue_with_facebook"> متابعة باستخدام Facebook </string>
+        
+    <string name="langues"> اللغات </string>
+        
+    <string name="register_account"> تسجيل الحساب </string>
+        
+    <string name="skip" translatable="true"> SKIP </string>
+        
+    <string name="full_name"> الاسم الكامل </string>
+        
+    <string name="password"> كلمة المرور </string>
+        
+    <string name="continue_"> متابعة </string>
+        
+    <string name="view_terms_and_conditions"> عرض البنود والشروط </string>
+        
+    <string name="back" translatable="true"> رجوع </string>
+        
+    <string name="la_une" translatable="true"> المميز </string>
+        
+    <string name="actualit_s" translatable="true"> الأخبار </string>
+        
+    <string name="mon_s_jour" translatable="true"> إقامتي </string>
+
+        
+    <string name="param_tres"> الإعدادات </string>
+        
+    <string name="open"> open </string>
+        
+    <string name="close"> close </string>
+        
+    <string name="la_plage"> إلى الشاطئ </string>
+        
+    <string name="tour_de_tunisie_des_plages"> جولة شاطئ تونس </string>
+        
+    <string name="animation_non_stop"> الرسوم المتحركة بدون توقف </string>
+        
+    <string name="les_les"> الجزر </string>
+        
+    <string name="tunisie"> Tunisie </string>
+        
+    <string name="discover_now"> اكتشف الآن </string>
+        
+    <string name="tabarka"> طبرقة </string>
+        
+    <string name="read_more"> اقرأ المزيد </string>
+        
+    <string name="next"> التالي </string>
+        
+    <string name="d_connexion"> تسجيل الخروج </string>
+        
+    <string name="search"> البحث </string>
+        
+    <string name="les_incontournables"> لا مفر منه </string>
+        
+    <string name="choose_filtre"> اختر … </string>
+        
+    <string name="title_activity_maps"> الخريطة </string>
+        
+    <string name="events"> الأحداث </string>
+        
+    <string name="photos"> الصور </string>
+        
+    <string name="videos"> مقاطع الفيديو </string>
+        
+    <string name="visit_virtuel"> الزيارة الافتراضية </string>
+        
+    <string name="empty_data"> بيانات فارغة </string>
+
+    <string name="connect">تسجيل الدخول</string>
+</resources>
