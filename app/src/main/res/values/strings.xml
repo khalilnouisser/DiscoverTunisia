@@ -44,4 +44,8 @@
     <string name="videos">Videos</string>
     <string name="visit_virtuel">Visite virtuelle</string>
     <string name="empty_data">Empty data</string>
+    <string name="city">Cité</string>
+    <string name="phone">Téléphone</string>
+    <string name="adress">Adresse</string>
+    <string name="description">Description</string>
 </resources>

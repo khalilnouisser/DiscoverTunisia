@@ -130,12 +130,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         } catch (Exception e) {
         }
 
-        layoutFiltre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openFiltreLayout();
-            }
-        });
+        layoutFiltre.setOnClickListener(view -> openFiltreLayout());
     }
 
     private void openFiltreLayout() {
@@ -174,11 +169,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private void openPlaceDialog(Place place) {
 
-        final LinearLayout dialogFiltre = (LinearLayout) LayoutInflater.from(getContext()).inflate(
+        final View dialogFiltre =  LayoutInflater.from(getContext()).inflate(
                 R.layout.dialog_place, null, false);
 
         final AlertDialog alertDialog = new AlertDialog.Builder(Objects.requireNonNull(getContext())).create();
-        Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         alertDialog.setView(dialogFiltre);
 
@@ -435,18 +429,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                         selectedPostion = i;
                         Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    rvPlaces.smoothScrollToPosition(selectedPostion);
-                                } catch (Exception e) {
-
-                                }
+                        handler.postDelayed(() -> {
+                            try {
+                                rvPlaces.smoothScrollToPosition(selectedPostion);
+                                openPlaceDialog(displayedPlaces.get(selectedPostion));
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
                         }, 250);
 
-                        openPlaceDialog(displayedPlaces.get(selectedPostion));
+
 
                         float zoom = mMap.getCameraPosition().zoom;
                         if (zoom < 9)
@@ -574,7 +566,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
             @Override
             public void onFailure(Call<ListResponse<Place>> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
 

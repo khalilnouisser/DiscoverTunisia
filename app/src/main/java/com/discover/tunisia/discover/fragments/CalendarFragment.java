@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.discover.tunisia.R;
+import com.discover.tunisia.discover.adapters.EventAdapter;
 import com.discover.tunisia.discover.entities.Event;
 import com.discover.tunisia.discover.entities.ListResponse;
 import com.discover.tunisia.services.RetrofitServiceFacotry;
@@ -23,6 +26,7 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +48,10 @@ public class CalendarFragment extends Fragment {
     @BindView(R.id.layout_call_taxi)
     RelativeLayout layoutCallTaxi;
 
-    private HashMap<CalendarDay, Event> dayEventHashMap = new HashMap<>();
+    @BindView(R.id.rv_events)
+    RecyclerView rvEvents;
+
+    private HashMap<CalendarDay, List<Event>> dayEventHashMap = new HashMap<>();
 
     public static Fragment newInstance() {
         Bundle args = new Bundle();
@@ -77,9 +84,13 @@ public class CalendarFragment extends Fragment {
         calendarView.setOnDateChangedListener((widget, date, selected) -> {
             try {
                 if (dayEventHashMap.get(date) != null) {
-                    tvEvent.setText(dayEventHashMap.get(date).getDescription());
-                    tvEvent.setVisibility(View.VISIBLE);
-                } else tvEvent.setVisibility(View.GONE);
+                    rvEvents.setLayoutManager(new LinearLayoutManager(getContext()));
+                    EventAdapter eventAdapter = new EventAdapter(getContext(),dayEventHashMap.get(date));
+                    rvEvents.setAdapter(eventAdapter);
+                    rvEvents.setVisibility(View.VISIBLE);
+//                    tvEvent.setText(dayEventHashMap.get(date).getDescription());
+//                    tvEvent.setVisibility(View.VISIBLE);
+                } else rvEvents.setVisibility(View.GONE);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -103,6 +114,8 @@ public class CalendarFragment extends Fragment {
         });
     }
 
+    private ArrayList<CalendarDay> dates;
+
     private void getEvents() {
 
         Call<ListResponse<Event>> call = RetrofitServiceFacotry.getServiceApiClient().getCalendar();
@@ -110,12 +123,18 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onResponse(Call<ListResponse<Event>> call, Response<ListResponse<Event>> response) {
                 try {
-                    final ArrayList<CalendarDay> dates = new ArrayList<>();
+                    dates = new ArrayList<>();
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                     for (Event event : response.body().getData()) {
                         final CalendarDay day = CalendarDay.from(simpleDateFormat.parse(event.getDate()));
                         dates.add(day);
-                        dayEventHashMap.put(day, event);
+                        List<Event> tmpEvents = new ArrayList<>();
+                        if (dayEventHashMap.containsKey(day)) {
+                            tmpEvents = dayEventHashMap.get(day);
+                        }else  {
+                            tmpEvents.add(event);
+                        }
+                        dayEventHashMap.put(day, tmpEvents);
                     }
                     calendarView.addDecorator(new EventDecorator(getResources().getColor(R.color.colorPrimary), dates));
                 } catch (Exception e) {
