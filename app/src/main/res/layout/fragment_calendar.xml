@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             app:mcv_selectionColor="@color/colorPrimary"
             app:mcv_tileHeight="40dp"
+            android:layout_marginBottom="16dp"
             app:mcv_tileWidth="50dp" />
 
         <LinearLayout
@@ -37,7 +38,7 @@
                 android:textColor="@color/black"
                 android:paddingStart="16dp"
                 android:textStyle="bold"
-                android:visibility="visible"
+                android:visibility="gone"
                 tools:text="Saint silvestre" />
 
             <LinearLayout

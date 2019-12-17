@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.discover.tunisia.R;
+import com.discover.tunisia.discover.adapters.FiltreAdapter;
 import com.discover.tunisia.discover.adapters.PlaceSmallHorizontalAdapter;
 import com.discover.tunisia.discover.entities.ListResponse;
 import com.discover.tunisia.discover.entities.Place;
@@ -146,42 +148,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         alertDialog.setView(dialogFiltre);
 
-        TextView tvRestaurant = dialogFiltre.findViewById(R.id.tv_restaurant);
-        TextView tvAgenceVoyage = dialogFiltre.findViewById(R.id.tv_agence);
-        TextView tvBureau = dialogFiltre.findViewById(R.id.tv_bureau);
-        TextView tvHotel = dialogFiltre.findViewById(R.id.tv_hotel);
+//        places
+        List<String> filtres = new ArrayList<>();
+        for (Place place : places) {
+            if (!filtres.contains(place.getType()))
+                filtres.add(place.getType());
+        }
+
+        RecyclerView rvFiltres = dialogFiltre.findViewById(R.id.rv_filtres);
         TextView tvAnnuler = dialogFiltre.findViewById(R.id.tv_annuler);
-
-        tvRestaurant.setOnClickListener(view -> {
-            tvFiltre.setText(tvRestaurant.getText());
-            applyFiltre("Restaurant");
+        rvFiltres.setLayoutManager(new LinearLayoutManager(getContext()));
+        FiltreAdapter filtreAdapter = new FiltreAdapter(getContext(), filtres);
+        rvFiltres.setAdapter(filtreAdapter);
+        filtreAdapter.setOnItemClickListener(filtre -> {
+            tvFiltre.setText(filtre);
+            applyFiltre(filtre);
             alertDialog.dismiss();
         });
 
-        tvAgenceVoyage.setOnClickListener(view -> {
-            tvFiltre.setText(tvAgenceVoyage.getText());
-            applyFiltre("Agence");
-            alertDialog.dismiss();
-        });
 
-        tvBureau.setOnClickListener(view -> {
-            tvFiltre.setText(tvBureau.getText());
-            applyFiltre("Bureau");
-            alertDialog.dismiss();
-        });
-
-        tvHotel.setOnClickListener(view -> {
-            tvFiltre.setText(tvHotel.getText());
-            applyFiltre("Hotel");
-            alertDialog.dismiss();
-        });
-
-        tvAnnuler.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-            }
-        });
+        tvAnnuler.setOnClickListener(view -> alertDialog.dismiss());
 
         alertDialog.show();
 
