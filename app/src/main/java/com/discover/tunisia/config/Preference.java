@@ -34,6 +34,21 @@ public class Preference {
         return null;
     }
 
+
+    public static User getCurrentLangue(Context context) {
+        try {
+            if (context != null) {
+                SharedPreferences preferences = PreferenceManager
+                        .getDefaultSharedPreferences(context);
+                return  Utils.getGsonInstance().fromJson(preferences.getString(Constante.USER, null), User.class);
+
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     public static void saveInPreferences(Context context, User user) {
         try {
             if (context != null) {

@@ -1,0 +1,44 @@
+<resources>
+    <string name = "app_name"> Discover </string>
+        <string name = "hello_blank_fragment"> Привет пустой фрагмент </string>
+        <string name = "email"> Электронная почта </string>
+        <string name = "hiden_password"> ******* </string>
+        <string name = "forget_yout_password"> Забыли пароль? </string>
+        <string name = "sign_in"> Войти </string>
+        <string name = "continue_with_facebook"> Продолжить с Facebook </string>
+        <string name = "langues"> Langues </string>
+        <string name = "register_account"> Зарегистрировать учетную запись </string>
+        <string name = "skip" transurable = "true"> SKIP </string>
+        <string name = "full_name"> Полное имя </string>
+        <string name = "password"> Password </string>
+        <string name = "continue_"> Continue </string>
+        <string name = "view_terms_and_conditions"> Просмотреть положения и условия </string>
+        <string name = "back" transhable = "true"> назад </string>
+        <string name = "la_une" transurable = "true"> Рекомендуемые </string>
+        <string name = "actualit_s" transurable = "true"> Новости </string>
+        <string name = "mon_s_jour" transhable = "true"> Мое пребывание </string>
+
+        <string name = "param_tres"> Настройки </string>
+        <string name = "open"> open </string>
+        <string name = "close"> close </string>
+        <string name = "la_plage"> На пляж </string>
+        <string name = "tour_de_tunisie_des_plages"> Тунисский пляжный тур </string>
+        <string name = "animation_non_stop"> Безостановочная анимация </string>
+        <string name = "les_les"> Острова </string>
+        <string name = "tunisie"> Tunisie </string>
+        <string name = "discover_now"> Узнайте сейчас </string>
+        <string name = "tabarka"> Табарка </string>
+        <string name = "read_more"> читать больше </string>
+        <string name = "next"> Next </string>
+        <string name = "d_connexion"> Déconnexion </string>
+        <string name = "search"> Search </string>
+        <string name = "les_incontournables"> Les incontournables </string>
+        <string name = "choose_filtre"> Выбор … </string>
+        <string name = "title_activity_maps"> Карта </string>
+        <string name = "events"> События </string>
+        <string name = "photos"> Фотографии </string>
+        <string name = "videos"> Видео </string>
+        <string name = "visit_virtuel"> Виртуальное посещение </string>
+        <string name = "empty_data"> Пустые данные </string>
+        <string name="connect"> Пустые данные </string>
+</resources>

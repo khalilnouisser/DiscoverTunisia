@@ -43,6 +43,8 @@ public class OneSejourFragment extends Fragment {
     CollapsingToolbarLayout collapsingToolbar;
     @BindView(R.id.app_bar)
     AppBarLayout appBar;
+    @BindView(R.id.tv_sejour_title)
+    TextView tvSejourTitle;
     @BindView(R.id.tv_description)
     TextView tvDescription;
     Unbinder unbinder;
@@ -78,7 +80,8 @@ public class OneSejourFragment extends Fragment {
 
     private void iniToolBar() {
         // toolbar
-        toolbar.setTitle(sejour.getName());
+        //toolbar.setTitle(sejour.getName());
+        tvSejourTitle.setText(sejour.getName());
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,10 +95,8 @@ public class OneSejourFragment extends Fragment {
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if ((collapsingToolbar.getHeight() + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsingToolbar))) {
                     Objects.requireNonNull(toolbar.getNavigationIcon()).setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
-                    toolbar.setTitleTextColor(R.color.colorPrimary);
                 } else {
                     Objects.requireNonNull(toolbar.getNavigationIcon()).setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-                    toolbar.setTitleTextColor(R.color.white);
                 }
             }
         });

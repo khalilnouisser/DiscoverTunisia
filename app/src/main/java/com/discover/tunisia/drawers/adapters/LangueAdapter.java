@@ -57,20 +57,12 @@ public class LangueAdapter extends RecyclerView.Adapter<LangueAdapter.ViewHolder
         viewHolder.itemView.setOnClickListener(v -> {
 
             assert langue != null;
-            if(langue.isSelected())
-            {
-                langue.setSelected(false);
-            }
-            else {
-                langue.setSelected(true);
-            }
             for(int j = 0;j<langues.size();j++)
             {
-                if(!langues.get(j).getName().equalsIgnoreCase(langue.getName()))
-                {
-                    langues.get(j).setSelected(false);
-                }
+              langues.get(j).setSelected(false);
             }
+           langue.setSelected(true);
+
             if(mListener!=null)
             {
                 mListener.onLangueChangedListener(langue);

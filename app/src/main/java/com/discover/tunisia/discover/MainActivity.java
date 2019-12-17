@@ -36,6 +36,7 @@ import android.widget.Toast;
 import com.discover.tunisia.R;
 import com.discover.tunisia.activities.TransitionActivity;
 import com.discover.tunisia.config.Constante;
+import com.discover.tunisia.config.LocaleHelper;
 import com.discover.tunisia.config.Preference;
 import com.discover.tunisia.config.Utils;
 import com.discover.tunisia.config.model.GeofencingFactory;
@@ -126,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-
         try {
             if(Preference.getCurrentCompte(getApplicationContext())!=null)
             {
@@ -134,6 +134,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }catch (Exception ignored)
         {
+
+        }
+
+        try {
+            initLangue();
+        } catch (Exception ignored) {
 
         }
         initDrawer();
@@ -160,21 +166,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        try {
-            initLangue();
-        } catch (Exception ignored) {
-
-        }
     }
 
     private void initLangue() {
         Locale[] locales = new Locale[]{
-                new Locale("fr", "FR"),
-                new Locale("ar", "TN"),
-                new Locale("it", "IT"),
-                new Locale("en", "USA"),
-                Locale.forLanguageTag("nl"),
-                Locale.forLanguageTag("zh-Hans"),
+                Locale.forLanguageTag("fr"),
+                Locale.forLanguageTag("ar"),
+                Locale.forLanguageTag("it"),
+                Locale.forLanguageTag("en"),
+                Locale.forLanguageTag("zh"),
                 Locale.forLanguageTag("ru"),
                 Locale.forLanguageTag("cs"),
                 Locale.forLanguageTag("pl"),
@@ -184,6 +184,27 @@ public class MainActivity extends AppCompatActivity {
         for (Locale locale : locales) {
             langues.add(new Langue(locale.getDisplayLanguage(locale), false,locale));
         }
+        try {
+            LocaleHelper.onAttach(this);
+        } catch (Exception ignored) {
+
+        }
+
+        try {
+            if (LocaleHelper.getLanguage(this) != null) {
+                LocaleHelper.onAttach(getApplicationContext(),LocaleHelper.getLanguage(getApplicationContext()));
+                for (int i = 0; i < langues.size(); i++) {
+                    if (langues.get(i).getLocale().getLanguage().equals(LocaleHelper.getLanguage(this))) {
+                        tvLangue.setText(langues.get(i).getName());
+                        langues.get(i).setSelected(true);
+                        LocaleHelper.setLocale(this, langues.get(i).getLocale().getLanguage());
+                     }
+                }
+            }
+        } catch (Exception ignored) {
+
+        }
+
 
     }
 
@@ -259,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
                 tvLougout.setVisibility(View.VISIBLE);
                 ivBookmark.setVisibility(View.VISIBLE);
             } else {
-                tvUserName.setText("Connect");
+                tvUserName.setText(getResources().getString(R.string.connect));
                 tvUserAdress.setVisibility(View.GONE);
                 tvUserAdress.setVisibility(View.GONE);
                 ivBookmark.setVisibility(View.GONE);
@@ -269,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
             tvLougout.setOnClickListener(v -> {
                 Preference.logout(getApplicationContext());
                 layoutDrawer.closeDrawer(Gravity.START);
-                tvUserName.setText("Connect");
+                tvUserName.setText(getResources().getString(R.string.connect));
                 tvUserAdress.setVisibility(View.GONE);
                 ivBookmark.setVisibility(View.GONE);
             });
@@ -334,15 +355,14 @@ public class MainActivity extends AppCompatActivity {
         LangueAdapter.setOnLangueChangedListener(langue -> {
             alertDialog.dismiss();
             tvLangue.setText(langue.getName());
-                    Resources res = getApplicationContext().getResources();
-                    DisplayMetrics dm = res.getDisplayMetrics();
-                    android.content.res.Configuration conf = res.getConfiguration();
-                    conf.setLocale(langue.getLocale()); // API 17+ only.
-                    res.updateConfiguration(conf, dm);
+                    //Utils.displayLangue(Objects.requireNonNull(this),langue.getLocale());
+                    LocaleHelper.setLocale(this,langue.getLocale().getLanguage());
+                    recreate();
         }
         );
 
     }
+
 
     private void initUser(User currentCompte) {
         tvUserName.setText(currentCompte.getName());

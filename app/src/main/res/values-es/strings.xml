@@ -1,0 +1,44 @@
+<resources>
+    <string name = "app_name"> Descubrir </string>
+        <string name = "hello_blank_fragment"> Hola fragmento en blanco </string>
+        <string name = "email"> Correo electrónico </string>
+        <string name = "hiden_password"> ******* </string>
+        <string name = "forget_yout_password"> ¿Olvidó su contraseña? </string>
+        <string name = "sign_in"> Iniciar sesión </string>
+        <string name = "continue_with_facebook"> Continuar con Facebook </string>
+        <string name = "langues"> Langues </string>
+        <string name = "register_account"> Registrar cuenta </string>
+        <string name = "skip" translatable = "true"> SKIP </string>
+        <string name = "full_name"> Nombre completo </string>
+        <string name = "password"> Contraseña </string>
+        <string name = "continue_"> Continuar </string>
+        <string name = "view_terms_and_conditions"> Ver términos y condiciones </string>
+        <string name = "back" translatable = "true"> atrás </string>
+        <string name = "la_une" translatable = "true"> Destacado </string>
+        <string name = "actualit_s" translatable = "true"> Noticias </string>
+        <string name = "mon_s_jour" translatable = "true"> Mi estadía </string>
+
+        <string name = "param_tres"> Configuración </string>
+        <string name = "open"> abrir </string>
+        <string name = "close"> close </string>
+        <string name = "la_plage"> A la playa </string>
+        <string name = "tour_de_tunisie_des_plages"> Tour por la playa de Túnez </string>
+        <string name = "animation_non_stop"> Animación sin parar </string>
+        <string name = "les_les"> Las islas </string>
+        <string name = "tunisie"> Túnez </string>
+        <string name = "discover_now"> Descubrir ahora </string>
+        <string name = "tabarka"> Tabarka </string>
+        <string name = "read_more"> leer más </string>
+        <string name = "next"> Siguiente </string>
+        <string name = "d_connexion"> Déconnexion </string>
+        <string name = "search"> Buscar </string>
+        <string name = "les_incontournables"> Los inevitables </string>
+        <string name = "choose_filtre"> Elija … </string>
+        <string name = "title_activity_maps"> Mapa </string>
+        <string name = "events"> Eventos </string>
+        <string name = "photos"> Fotos </string>
+        <string name = "videos"> Videos </string>
+        <string name = "visit_virtuel"> Visita virtual </string>
+        <string name = "empty_data"> Datos vacíos </string>
+        <string name="connect"> Connecto </string>
+</resources>

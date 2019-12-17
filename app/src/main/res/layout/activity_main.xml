@@ -14,12 +14,14 @@
         <RelativeLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="80dp">
+            android:background="#ffffff"
+            android:elevation="4dp"
+            android:layout_height="60dp">
 
             <ImageView
                 android:id="@+id/iv_menu"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/menu"
@@ -27,7 +29,7 @@
 
             <ImageView
                 android:layout_width="170dp"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_centerInParent="true"
                 android:src="@drawable/inspring_logo"
                 tools:ignore="ContentDescription" />
@@ -39,13 +41,13 @@
                 android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/iv_map"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/ic_map"
-                    tools:ignore="ContentDescription" />
+            <ImageView
+                android:id="@+id/iv_map"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_map"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/iv_search"
@@ -85,9 +87,10 @@
         android:id="@+id/slider"
         android:layout_width="304dp"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
         android:background="@color/colorPrimary"
+        android:layout_gravity="start"
         android:orientation="vertical">
+        <!--android:layout_gravity="start"-->
 
         <LinearLayout
             android:id="@+id/layout_header"
@@ -164,7 +167,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="30dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="10dp"
             android:layout_marginRight="16dp"
             android:text="@string/la_une"
             android:textColor="@color/white"
@@ -174,7 +178,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:background="@color/white" />
 
@@ -183,7 +186,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
             android:layout_marginRight="16dp"
             android:text="@string/actualit_s"
             android:textColor="@color/white"
@@ -193,7 +197,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:background="@color/white" />
 
@@ -202,7 +205,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
             android:layout_marginRight="16dp"
             android:text="@string/mon_s_jour"
             android:textColor="@color/white"
@@ -212,7 +216,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:background="@color/white" />
 
@@ -221,7 +224,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
             android:layout_marginRight="16dp"
             android:text="@string/les_incontournables"
             android:textColor="@color/white"
@@ -231,7 +235,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:background="@color/white" />
 
@@ -240,7 +243,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
             android:layout_marginRight="16dp"
             android:text="@string/param_tres"
             android:textColor="@color/white"
@@ -250,7 +254,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:background="@color/white" />
 
@@ -259,7 +262,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
             android:layout_marginRight="16dp"
             android:text="@string/d_connexion"
             android:textColor="@color/white"
@@ -270,7 +274,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:background="@color/white" />
 

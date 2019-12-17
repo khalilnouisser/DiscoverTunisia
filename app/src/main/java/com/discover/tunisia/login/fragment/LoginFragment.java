@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.discover.tunisia.R;
 import com.discover.tunisia.activities.TransitionActivity;
 import com.discover.tunisia.config.Constante;
+import com.discover.tunisia.config.LocaleHelper;
 import com.discover.tunisia.config.Preference;
 import com.discover.tunisia.config.Utils;
 import com.discover.tunisia.discover.MainActivity;
@@ -106,6 +107,7 @@ public class LoginFragment extends Fragment {
     private LoginButton loginButton;
     List<Langue> langues = new ArrayList<>();
     User user = new User();
+
     public LoginFragment() {
         // Required empty public constructor
     }
@@ -118,16 +120,17 @@ public class LoginFragment extends Fragment {
             LoginManager.getInstance().logOut();
         }
         callbackManager = CallbackManager.Factory.create();
+
     }
 
     private void initLangue() {
         Locale[] locales = new Locale[]{
-                new Locale("fr", "FR"),
-                new Locale("ar", "TN"),
-                new Locale("it", "IT"),
-                new Locale("en", "USA"),
+                Locale.forLanguageTag("fr"),
+                Locale.forLanguageTag("ar"),
+                Locale.forLanguageTag("it"),
+                Locale.forLanguageTag("en"),
                 Locale.forLanguageTag("nl"),
-                Locale.forLanguageTag("zh-Hans"),
+                Locale.forLanguageTag("zh"),
                 Locale.forLanguageTag("ru"),
                 Locale.forLanguageTag("cs"),
                 Locale.forLanguageTag("pl"),
@@ -135,8 +138,28 @@ public class LoginFragment extends Fragment {
 
         };
         for (Locale locale : locales) {
-            langues.add(new Langue(locale.getDisplayLanguage(locale), false,locale));
+            langues.add(new Langue(locale.getDisplayLanguage(locale), false, locale));
         }
+        try {
+            LocaleHelper.onAttach(getContext());
+        } catch (Exception ignored) {
+
+        }
+
+        try {
+            if (LocaleHelper.getLanguage(getContext()) != null) {
+                for (int i = 0; i < langues.size(); i++) {
+                    if (langues.get(i).getLocale().getLanguage().equals(LocaleHelper.getLanguage(getContext()))) {
+                        langues.get(i).setSelected(true);
+                        tvLangue.setText(langues.get(i).getName());
+                        LocaleHelper.setLocale(getContext(), langues.get(i).getLocale().getLanguage());
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+
+        }
+
 
     }
 
@@ -148,18 +171,25 @@ public class LoginFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
         FacebookSdk.sdkInitialize(Objects.requireNonNull(getActivity()).getApplicationContext());
         loginButton = view.findViewById(R.id.login_button);
+
+
         if (FacebookSdk.isInitialized()) {
             LoginManager.getInstance().logOut();
         }
+        try {
+            initLangue();
+        } catch (Exception ignored) {
+
+        }
+
         if (Preference.getCurrentCompte(getContext()) != null) {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
             Objects.requireNonNull(getActivity()).finish();
         } else {
-            if(!Preference.hasViewTuto(getContext()))
-            {
+            if (!Preference.hasViewTuto(getContext())) {
                 setupViewPager();
-            }else {
+            } else {
                 pager.setVisibility(View.GONE);
                 tabDots.setVisibility(View.GONE);
                 layoutLogin.setVisibility(View.VISIBLE);
@@ -173,12 +203,7 @@ public class LoginFragment extends Fragment {
         } catch (Exception ignored) {
 
         }
-        try {
-            initLangue();
-        }catch (Exception ignored)
-        {
 
-        }
         try {
             tvCreateAccount.setOnClickListener(v -> {
                 Intent intent = new Intent(getActivity(), TransitionActivity.class);
@@ -199,7 +224,7 @@ public class LoginFragment extends Fragment {
 
     private void showSelectLangue() {
 
-        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
         @SuppressLint("InflateParams") final View viewAlerte = inflater.inflate(R.layout.layout_langue, null);
@@ -212,11 +237,19 @@ public class LoginFragment extends Fragment {
         final AlertDialog alertDialog = dialogBuilder.show();
         LangueAdapter.setOnLangueChangedListener(langue -> {
                     alertDialog.dismiss();
+                    for (int j = 0; j < langues.size(); j++) {
+                        if (langues.get(j).getName().equals(langue.getName())) {
+                            langues.get(j).setSelected(true);
+                        }
+                    }
                     tvLangue.setText(langue.getName());
+                    LocaleHelper.setLocale(getContext(), langue.getLocale().getLanguage());
+                    getActivity().recreate();
                 }
         );
 
     }
+
 
     private void initLogin() {
         tvSkip.setOnClickListener(v -> {
@@ -270,10 +303,8 @@ public class LoginFragment extends Fragment {
                         assert response.body() != null;
                         JSONArray object = new JSONArray(response.body().string());
                         Gson gson = Utils.getGsonInstance();
-                        System.out.println(gson.toString());
                         User user = gson.fromJson(object.get(0).toString(), User.class);
                         Preference.saveInPreferences(getContext(), user);
-
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);
                         Objects.requireNonNull(getActivity()).finish();
@@ -357,7 +388,7 @@ public class LoginFragment extends Fragment {
                 pager.setVisibility(View.GONE);
                 tabDots.setVisibility(View.GONE);
                 layoutLogin.setVisibility(View.VISIBLE);
-                Preference.saveViewTuto(getContext(),true);
+                Preference.saveViewTuto(getContext(), true);
             }
         });
     }
@@ -463,19 +494,17 @@ public class LoginFragment extends Fragment {
                         JSONArray object = new JSONArray(response.body().string());
                         try {
                             response.body().string();
-                            if(response.body().string().isEmpty())
-                            {
+                            if (response.body().string().isEmpty()) {
 
-                            }
-                            else {
+                            } else {
                                 Gson gson = Utils.getGsonInstance();
                                 user = gson.fromJson(object.get(0).toString(), User.class);
                             }
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        if(user!=null)
-                        Preference.saveInPreferences(getContext(), user);
+                        if (user != null)
+                            Preference.saveInPreferences(getContext(), user);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {

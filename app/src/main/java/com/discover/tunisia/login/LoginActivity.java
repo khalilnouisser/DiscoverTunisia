@@ -9,9 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 
 import com.discover.tunisia.R;
+import com.discover.tunisia.config.Utils;
 import com.discover.tunisia.login.fragment.LoginFragment;
 
 import java.security.MessageDigest;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

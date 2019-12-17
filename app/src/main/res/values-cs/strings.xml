@@ -1,0 +1,45 @@
+<resources>
+    <string name = "app_name"> Discover </string>
+
+        <string name = "hello_blank_fragment"> Dobrý den, prázdný fragment </string>
+        <string name = "email"> Email </string>
+        <string name = "hiden_password"> ******* </string>
+        <string name = "forget_yout_password"> Zapomněli jste heslo? </string>
+        <string name = "sign_in"> Přihlásit se </string>
+        <string name = "continue_with_facebook"> Continue With Facebook </string>
+        <string name = "langues"> Langues </string>
+        <string name = "register_account"> Zaregistrujte účet </string>
+        <string name = "skip" translatable = "true"> SKIP </string>
+        <string name = "full_name"> Celé jméno </string>
+        <string name = "password"> Password </string>
+        <string name = "continue_"> Pokračovat </string>
+        <string name = "view_terms_and_conditions"> Zobrazit smluvní podmínky </string>
+        <string name = "back" translatable = "true"> back </string>
+        <string name = "la_une" translatable = "true"> Doporučené </string>
+        <string name = "actualit_s" translatable = "true"> News </string>
+        <string name = "mon_s_jour" translatable = "true"> Můj pobyt </string>
+
+        <string name = "param_tres"> Settings </string>
+        <string name = "open"> open </string>
+        <string name = "close"> close </string>
+        <string name = "la_plage"> Na pláž </string>
+        <string name = "tour_de_tunisie_des_plages"> Tunisia Beach Tour </string>
+        <string name = "animation_non_stop"> Nepřetržitá animace </string>
+        <string name = "les_les"> The Islands </string>
+        <string name = "tunisie"> Tunisie </string>
+        <string name = "discover_now"> Objevte nyní </string>
+        <string name = "tabarka"> Tabarka </string>
+        <string name = "read_more"> read more </string>
+        <string name = "next"> Next </string>
+        <string name = "d_connexion"> odhlášení </string>
+        <string name = "search"> Search </string>
+        <string name = "les_incontournables"> Les unftournables </string>
+        <string name = "choose_filtre"> Choose … </string>
+        <string name = "title_activity_maps"> Map </string>
+        <string name = "events"> Events </string>
+        <string name = "photos"> Photos </string>
+        <string name = "videos"> Videos </string>
+        <string name = "visit_virtuel"> Virtuální návštěva </string>
+        <string name = "empty_data"> Empty data </string>
+        <string name="connect"> Virtuální </string>
+    </resources>

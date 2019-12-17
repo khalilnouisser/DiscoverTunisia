@@ -1,66 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<FrameLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/tunisie"
-    android:orientation="vertical"
-    tools:context=".navigations.NavigationFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v4.widget.NestedScrollView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:src="@drawable/tunisie"
+        android:background="@color/darkColor"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        />
 
-        <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTintMode="screen"
+        android:orientation="vertical"
+        tools:context=".navigations.NavigationFragment">
+
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="50dp"
-                android:text="@string/tunisie"
-                android:textAllCaps="true"
-                android:textColor="@color/secondColor"
-                android:textSize="28sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
-                android:text="Il y a tant de choses à découvrir dans chaque région de la Tunisie : des paysages contrastés, un littoral long de 1250 km parsemé d'îles et d'archipels, des traditions et coutumes diverses, un riche héritage historique.\nNous vous présentons ces régions en les répartissant, par commodité, en trois zones :\n
-le nord, le centre et le sud."
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/tv_discover"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/shape_white_raduis_6dp"
-                android:paddingStart="30dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="30dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginLeft="50dp"
-                android:paddingBottom="10dp"
-                android:text="@string/discover_now"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/secondColor"
-                android:textSize="18sp"
-                android:fontFamily="sans-serif-medium"
-                />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.06"
+                    android:text="@string/tunisie"
+                    android:textAllCaps="true"
+                    android:textColor="@color/secondColor"
+                    android:textSize="32sp" />
 
-</LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:lineSpacingExtra="4sp"
+                    android:text="Il y a tant de choses à découvrir dans chaque région de la Tunisie : des paysages contrastés, un littoral long de 1250 km parsemé d'îles et d'archipels, des traditions et coutumes diverses, un riche héritage historique.\nNous vous présentons ces régions en les répartissant, par commodité, en trois zones :\nle nord, le centre et le sud."
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tv_discover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/shape_white_raduis_6dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingStart="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/discover_now"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/secondColor"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>
+

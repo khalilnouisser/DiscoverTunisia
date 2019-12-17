@@ -1,0 +1,44 @@
+<resources>
+        <string name ="app_name">发现</string>
+        <string name ="hello_blank_fragment">你好空白片段</string>
+        <string name ="email">电子邮件</string>
+        <string name ="hiden_password"> ******* </string>
+        <string name ="forget_yout_password">忘记密码了吗？</string>
+        <string name ="sign_in">登录</string>
+        <string name ="continue_with_facebook">继续使用Facebook </string>
+        <string name ="langues">语言</string>
+        <string name ="register_account">注册帐户</string>
+        <string name ="skip" translatable ="true">跳过</string>
+        <string name ="full_name">全名</string>
+        <string name ="password">密码</string>
+        <string name ="continue_">继续</string>
+        <string name ="view_terms_and_conditions">查看条款和条件</string>
+        <string name ="back" translatable ="true">返回</string>
+        <string name ="la_une" translatable ="true">精选</string>
+        <string name ="actualit_s" translatable ="true">新闻</string>
+        <string name ="mon_s_jour" translatable ="true">我的住宿</string>
+
+        <string name ="param_tres">设置</string>
+        <string name ="open">打开</string>
+        <string name ="close">关闭</string>
+        <string name ="la_plage">到海滩</string>
+        <string name ="tour_de_tunisie_des_plages">突尼斯海滩之旅</string>
+        <string name ="animation_non_stop">不间断的动画</string>
+        <string name ="les_les">诸岛</string>
+        <string name ="tunisie">突尼斯</string>
+        <string name ="discover_now">立即发现</string>
+        <string name ="tabarka">塔巴卡</string>
+        <string name ="read_more">了解更多</string>
+        <string name ="next">下一个</string>
+        <string name ="d_connexion">Déconnexion</string>
+        <string name ="search">搜索</string>
+        <string name ="les_incontournables">不可变形的人</string>
+        <string name ="choose_filtre">选择… </string>
+        <string name ="title_activity_maps">地图</string>
+        <string name ="events">事件</string>
+        <string name ="photos">照片</string>
+        <string name ="videos">视频</string>
+        <string name ="visit_virtuel">虚拟访问</string>
+        <string name ="empty_data">空数据</string>
+        <string name="connect">空数据据</string>
+    </resources>

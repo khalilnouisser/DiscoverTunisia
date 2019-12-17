@@ -2,15 +2,18 @@ package com.discover.tunisia.config;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.discover.tunisia.R;
 import com.google.gson.Gson;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -18,6 +21,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 
@@ -82,12 +86,10 @@ public class Utils {
         if (imageURL != null && context != null) {
 
             Glide.with(context)
-
-                    .load(imageURL)
+                   .load(imageURL)
                     .into(roundedImageView);
         }
     }
-
 
 
 

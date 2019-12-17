@@ -11,6 +11,7 @@ public class Langue {
     public Langue(String name, boolean isSelected, Locale locale) {
         this.name = name;
         this.isSelected = isSelected;
+        this.locale = locale;
     }
 
     public String getName() {

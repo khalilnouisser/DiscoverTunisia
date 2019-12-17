@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Discover</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="hiden_password">*******</string>
+    <string name="forget_yout_password">Forget yout password ?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="continue_with_facebook">Continue With Facebook</string>
+    <string name="langues">Langues</string>
+    <string name="register_account">Register Account</string>
+    <string name="skip" translatable="true">SKIP</string>
+    <string name="full_name">Full Name</string>
+    <string name="password">Password</string>
+    <string name="continue_">Continue</string>
+    <string name="view_terms_and_conditions">View Terms and Conditions</string>
+    <string name="back" translatable="true">back</string>
+    <string name="la_une" translatable="true">Featured</string>
+    <string name="actualit_s" translatable="true">News</string>
+    <string name="mon_s_jour" translatable="true">My stay</string>
+
+    <string name="param_tres">Settings</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="la_plage">To the beach</string>
+    <string name="tour_de_tunisie_des_plages">Tunisia Beach Tour</string>
+    <string name="animation_non_stop">Non stop animation</string>
+    <string name="les_les">The islands</string>
+    <string name="tunisie">Tunisie</string>
+    <string name="discover_now">Discover now</string>
+    <string name="tabarka">Tabarka</string>
+    <string name="read_more">read more</string>
+    <string name="next">Next</string>
+    <string name="d_connexion">Sign Out</string>
+    <string name="search">Search</string>
+    <string name="les_incontournables">The unavoidable</string>
+    <string name="choose_filtre">To choose…</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="events">Events</string>
+    <string name="photos">Photos</string>
+    <string name="videos">Videos</string>
+    <string name="visit_virtuel">Virtual visit</string>
+    <string name="empty_data">Empty data</string>
+    <string name="connect" translatable="true">Connect</string>
+</resources>
