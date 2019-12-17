@@ -112,7 +112,7 @@ public class GeofenceBroadcastReceiver extends BroadcastReceiver {
 
         // Define the notification settings.
         try {
-            builder.setSmallIcon(R.drawable.ic_launcher_background)
+            builder.setSmallIcon(R.drawable.ic_launcher)
                     .setContentTitle(plan.getTitle())
                     .setContentText(plan.getDescription())
                     .setContentIntent(notificationPendingIntent);

@@ -122,12 +122,20 @@ public class LoginFragment extends Fragment {
 
     private void initLangue() {
         Locale[] locales = new Locale[]{
-                Locale.getDefault(),
-                Locale.FRENCH,
-                new Locale("ar", "DZ")
+                new Locale("fr", "FR"),
+                new Locale("ar", "TN"),
+                new Locale("it", "IT"),
+                new Locale("en", "USA"),
+                Locale.forLanguageTag("nl"),
+                Locale.forLanguageTag("zh-Hans"),
+                Locale.forLanguageTag("ru"),
+                Locale.forLanguageTag("cs"),
+                Locale.forLanguageTag("pl"),
+                Locale.forLanguageTag("es")
+
         };
         for (Locale locale : locales) {
-            langues.add(new Langue(locale.getDisplayLanguage(locale), false, locale));
+            langues.add(new Langue(locale.getDisplayLanguage(locale), false,locale));
         }
 
     }
@@ -251,8 +259,8 @@ public class LoginFragment extends Fragment {
         String password = etPassword.getText().toString();
         String email = etEmail.getText().toString();
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("email", password);
-        jsonObject.addProperty("password", email);
+        jsonObject.addProperty("email", email);
+        jsonObject.addProperty("password", password);
         Call<ResponseBody> call = RetrofitServiceFacotry.getServiceApiClient().login(jsonObject);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -262,21 +270,37 @@ public class LoginFragment extends Fragment {
                         assert response.body() != null;
                         JSONArray object = new JSONArray(response.body().string());
                         Gson gson = Utils.getGsonInstance();
+                        System.out.println(gson.toString());
                         User user = gson.fromJson(object.get(0).toString(), User.class);
                         Preference.saveInPreferences(getContext(), user);
+
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                        Objects.requireNonNull(getActivity()).finish();
+                        try {
+                            pd.dismiss();
+                        } catch (Exception ignored) {
+
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        try {
+                            pd.dismiss();
+                            Snackbar.make(allLayout, "Wrong mail or password", Snackbar.LENGTH_LONG).show();
+                        } catch (Exception ignored) {
+
+                        }
+
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                    Objects.requireNonNull(getActivity()).finish();
-                    try {
-                        pd.dismiss();
-                    } catch (Exception ignored) {
+                        try {
+                            pd.dismiss();
+                            Snackbar.make(allLayout, "Wrong mail or password", Snackbar.LENGTH_LONG).show();
+                        } catch (Exception ignored) {
 
+                        }
                     }
+
 
                 } else {
                     try {

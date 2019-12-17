@@ -135,8 +135,8 @@ public class CreateAccountFragment extends Fragment {
         String email = etEmail.getText().toString();
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("name", name);
-        jsonObject.addProperty("email", password);
-        jsonObject.addProperty("password", email);
+        jsonObject.addProperty("email", email);
+        jsonObject.addProperty("password", password);
         User user = new User();
         user.setName(name);
         user.setEmail(email);
@@ -151,21 +151,35 @@ public class CreateAccountFragment extends Fragment {
                         Gson gson = Utils.getGsonInstance();
                         User user = gson.fromJson(object.get(0).toString(), User.class);
                         Preference.saveInPreferences(getContext(), user);
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                        Objects.requireNonNull(getActivity()).finish();
+                        try {
+                            pd.dismiss();
+                        }catch (Exception ignored)
+                        {
+                        }
+                        Preference.saveInPreferences(getContext(),user);
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        try {
+                            pd.dismiss();
+                            Snackbar.make(allLayout, "Mail already exist", Snackbar.LENGTH_LONG).show();
+                        }catch (Exception ignored)
+                        {
+
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                    Objects.requireNonNull(getActivity()).finish();
-                    try {
-                        pd.dismiss();
-                    }catch (Exception ignored)
-                    {
+                        try {
+                            pd.dismiss();
+                            Snackbar.make(allLayout, "Mail already exist", Snackbar.LENGTH_LONG).show();
+                        }catch (Exception ignored)
+                        {
 
+                        }
                     }
-                    Preference.saveInPreferences(getContext(),user);
+
                 } else {
                     try {
                         pd.dismiss();

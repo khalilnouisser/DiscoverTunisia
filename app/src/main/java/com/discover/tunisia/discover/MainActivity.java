@@ -169,9 +169,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void initLangue() {
         Locale[] locales = new Locale[]{
-                Locale.getDefault(),
-                Locale.FRENCH,
-                new Locale("ar", "DZ")
+                new Locale("fr", "FR"),
+                new Locale("ar", "TN"),
+                new Locale("it", "IT"),
+                new Locale("en", "USA"),
+                Locale.forLanguageTag("nl"),
+                Locale.forLanguageTag("zh-Hans"),
+                Locale.forLanguageTag("ru"),
+                Locale.forLanguageTag("cs"),
+                Locale.forLanguageTag("pl"),
+                Locale.forLanguageTag("es")
+
         };
         for (Locale locale : locales) {
             langues.add(new Langue(locale.getDisplayLanguage(locale), false,locale));
@@ -395,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
             List<Address> addresses = null;
             try {
                 addresses = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 3);
-                Utils.query = addresses.get(0).getLocality();
+                Utils.query = addresses.get(0).getAdminArea();
             } catch (IOException e) {
                 e.printStackTrace();
             }
