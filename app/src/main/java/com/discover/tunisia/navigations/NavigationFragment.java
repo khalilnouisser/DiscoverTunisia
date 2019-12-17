@@ -43,13 +43,10 @@ public class NavigationFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_navigation, container, false);
         unbinder = ButterKnife.bind(this, view);
-        tvDiscover.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TransitionActivity.class);
-                intent.putExtra(Constante.ACTION,Constante.DETAILS_NAVIGATION_FRAGMENT);
-                startActivity(intent);
-            }
+        tvDiscover.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), TransitionActivity.class);
+            intent.putExtra(Constante.ACTION,Constante.DETAILS_NAVIGATION_FRAGMENT);
+            startActivity(intent);
         });
         return view;
     }

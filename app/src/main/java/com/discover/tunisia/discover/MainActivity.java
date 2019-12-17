@@ -38,6 +38,7 @@ import com.discover.tunisia.activities.TransitionActivity;
 import com.discover.tunisia.config.Constante;
 import com.discover.tunisia.config.Preference;
 import com.discover.tunisia.config.Utils;
+import com.discover.tunisia.config.model.GeofencingFactory;
 import com.discover.tunisia.discover.Ui.CustomViewPager;
 import com.discover.tunisia.discover.adapters.HomeViewPagerAdapter;
 import com.discover.tunisia.drawers.adapters.LangueAdapter;
@@ -111,8 +112,6 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tv_langue)
     TextView tvLangue;
     private DrawerLayout mDrawerLayout;
-    private double latitude, longitude;
-    public LocationManager mLocManager;
     List<Langue> langues = new ArrayList<>();
     private final static int MY_PERMISSIONS_REQUEST_LOCALISATION = 128;
 
@@ -126,8 +125,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mLocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
+
+        try {
+            if(Preference.getCurrentCompte(getApplicationContext())!=null)
+            {
+                ivBookmark.setVisibility(View.VISIBLE);
+            }
+        }catch (Exception ignored)
+        {
+
+        }
         initDrawer();
         initNavigationMenu();
         initViewPager();
@@ -145,6 +153,13 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            new GeofencingFactory(this).initializeGeofence();
+        } catch (Exception ignored) {
+
+        }
+
         try {
             initLangue();
         } catch (Exception ignored) {
@@ -207,6 +222,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        ivBookmark.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, TransitionActivity.class);
+            intent.putExtra(Constante.ACTION, Constante.BOOKMARK);
+            startActivity(intent);
+            layoutDrawer.closeDrawer(Gravity.START);
+        });
+
         ivMap.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, TransitionActivity.class);
             intent.putExtra(Constante.ACTION, Constante.MAP);
@@ -227,9 +249,12 @@ public class MainActivity extends AppCompatActivity {
                 initUser(Objects.requireNonNull(Preference.getCurrentCompte(getApplicationContext())));
                 viewLogout.setVisibility(View.VISIBLE);
                 tvLougout.setVisibility(View.VISIBLE);
+                ivBookmark.setVisibility(View.VISIBLE);
             } else {
                 tvUserName.setText("Connect");
                 tvUserAdress.setVisibility(View.GONE);
+                tvUserAdress.setVisibility(View.GONE);
+                ivBookmark.setVisibility(View.GONE);
                 viewLogout.setVisibility(View.GONE);
                 tvLougout.setVisibility(View.GONE);
             }
@@ -238,6 +263,7 @@ public class MainActivity extends AppCompatActivity {
                 layoutDrawer.closeDrawer(Gravity.START);
                 tvUserName.setText("Connect");
                 tvUserAdress.setVisibility(View.GONE);
+                ivBookmark.setVisibility(View.GONE);
             });
         } catch (Exception e) {
             e.printStackTrace();

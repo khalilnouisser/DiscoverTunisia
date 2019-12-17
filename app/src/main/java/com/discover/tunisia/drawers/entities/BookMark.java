@@ -1,26 +1,16 @@
-package com.discover.tunisia.photos.entities;
+package com.discover.tunisia.drawers.entities;
+
+import com.discover.tunisia.discover.entities.Event;
 
 import java.io.Serializable;
 
-public class Photo implements Serializable {
-
+public class BookMark implements Serializable {
     private String id;
     private String type;
-    private String image;
     private String video_link;
+    private String image;
+    private Event event;
     private boolean is_clicked_favoris;
-
-    public Photo(String image) {
-        this.image = image;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public String getId() {
         return id;
@@ -44,6 +34,22 @@ public class Photo implements Serializable {
 
     public void setVideo_link(String video_link) {
         this.video_link = video_link;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 
     public boolean isIs_clicked_favoris() {

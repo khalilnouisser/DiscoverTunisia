@@ -9,6 +9,10 @@ public class Event implements Serializable {
     private String description;
     private String thumbnail ;
     private String date;
+    private boolean is_clicked_favoris;
+
+    public Event() {
+    }
 
     public Event(String title, String description, String image, String date) {
         this.name = title;
@@ -55,5 +59,13 @@ public class Event implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public boolean isIs_clicked_favoris() {
+        return is_clicked_favoris;
+    }
+
+    public void setIs_clicked_favoris(boolean is_clicked_favoris) {
+        this.is_clicked_favoris = is_clicked_favoris;
     }
 }

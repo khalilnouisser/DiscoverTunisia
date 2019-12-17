@@ -15,6 +15,7 @@ import com.discover.tunisia.R;
 import com.discover.tunisia.config.Utils;
 import com.discover.tunisia.discover.entities.Event;
 import com.discover.tunisia.navigations.adapters.NavigationAdapter;
+import com.discover.tunisia.navigations.adapters.NavigationPagerAdapter;
 import com.discover.tunisia.navigations.entities.Navigation;
 import com.discover.tunisia.services.RetrofitServiceFacotry;
 import com.google.gson.Gson;
@@ -45,7 +46,7 @@ public class DetailsNavigationFragment extends Fragment {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rv_navigation)
-    RecyclerView rvNavigation;
+    android.support.v4.view.ViewPager rvNavigation;
     Unbinder unbinder;
 
     public DetailsNavigationFragment() {
@@ -123,8 +124,7 @@ public class DetailsNavigationFragment extends Fragment {
     }
 
     private void initAdapter(List<Navigation> navigations) {
-        NavigationAdapter adapter = new NavigationAdapter(getContext(),navigations);
-        rvNavigation.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        NavigationPagerAdapter adapter = new NavigationPagerAdapter(getContext(),navigations);
         rvNavigation.setAdapter(adapter);
     }
 

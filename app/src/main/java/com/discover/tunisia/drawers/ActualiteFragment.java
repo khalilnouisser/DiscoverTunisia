@@ -112,7 +112,7 @@ public class ActualiteFragment extends Fragment {
     }
 
     private void initEventAdapter(List<Event> events) {
-        ALaUneAdapter adapter = new ALaUneAdapter(getContext(), events);
+        ALaUneAdapter adapter = new ALaUneAdapter(getContext(), events,1);
         rvEvents.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvEvents.setAdapter(adapter);
     }

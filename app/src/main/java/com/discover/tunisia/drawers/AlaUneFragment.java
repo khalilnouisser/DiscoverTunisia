@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.discover.tunisia.R;
+import com.discover.tunisia.config.Preference;
 import com.discover.tunisia.config.Utils;
 
 import com.discover.tunisia.discover.entities.Event;
@@ -74,7 +75,12 @@ public class AlaUneFragment extends Fragment {
     }
 
     private void initEvents() {
-        Call<ResponseBody> call = RetrofitServiceFacotry.getServiceApiClient().getEvent();
+        Call<ResponseBody> call = null;
+        if(Preference.getCurrentCompte(getContext())!=null)
+        {
+            call = RetrofitServiceFacotry.getServiceApiClient().getEvent(Integer.parseInt(Objects.requireNonNull(Preference.getCurrentCompte(getContext())).getId()));
+        }
+        else call = RetrofitServiceFacotry.getServiceApiClient().getEvent();
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
@@ -109,7 +115,7 @@ public class AlaUneFragment extends Fragment {
     }
 
     private void initEventAdapter(List<Event> events) {
-        ALaUneAdapter adapter = new ALaUneAdapter(getContext(), events);
+        ALaUneAdapter adapter = new ALaUneAdapter(getContext(), events, 0);
         rvEvents.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvEvents.setAdapter(adapter);
     }

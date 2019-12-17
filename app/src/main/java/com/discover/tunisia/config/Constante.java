@@ -22,6 +22,7 @@ public class Constante {
     public static int NewsFragment = 11;
     public static int SEARCH = 12;
     public static int  MAP = 13;
+    public static int  BOOKMARK = 14;
 
 
 }

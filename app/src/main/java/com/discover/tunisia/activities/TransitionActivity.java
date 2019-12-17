@@ -20,6 +20,7 @@ import com.discover.tunisia.drawers.ActualiteFragment;
 import com.discover.tunisia.drawers.AlaUneFragment;
 import com.discover.tunisia.drawers.AllIncontournableFragment;
 import com.discover.tunisia.drawers.AllSejourFragment;
+import com.discover.tunisia.drawers.BookMarkFragment;
 import com.discover.tunisia.drawers.SearchFragment;
 import com.discover.tunisia.incontournables.IncontournableFragment;
 import com.discover.tunisia.login.fragment.CreateAccountFragment;
@@ -81,6 +82,8 @@ public class TransitionActivity extends AppCompatActivity {
             currentFragment = SearchFragment.newInstance();
         } else if (action == Constante.MAP) {
             currentFragment = MapFragment.newInstance();
+        }else if (action == Constante.BOOKMARK) {
+            currentFragment = BookMarkFragment.newInstance();
         }
 
 

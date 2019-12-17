@@ -39,4 +39,9 @@
     <string name="les_incontournables">Les incontournables</string>
     <string name="choose_filtre">Choisir...</string>
     <string name="title_activity_maps">Map</string>
+    <string name="events">Events</string>
+    <string name="photos">Photos</string>
+    <string name="videos">Videos</string>
+    <string name="visit_virtuel">Visite virtuelle</string>
+    <string name="empty_data">Empty data</string>
 </resources>
