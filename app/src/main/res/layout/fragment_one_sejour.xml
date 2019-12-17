@@ -9,7 +9,7 @@
     >
 
     <android.support.design.widget.AppBarLayout
-        android:layout_height="200dp"
+        android:layout_height="160dp"
         android:layout_width="match_parent"
         android:id="@+id/app_bar"
         >
@@ -35,10 +35,9 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways"
                 app:layout_collapseMode="pin"
-                app:title="À la plage"
-                app:titleTextColor="@color/white"/>
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:subtitleTextColor="@color/colorPrimary" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -63,4 +62,14 @@
                android:textColor="@color/black"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:id="@+id/tv_sejour_title"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 </android.support.design.widget.CoordinatorLayout>

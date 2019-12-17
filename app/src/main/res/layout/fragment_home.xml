@@ -9,146 +9,167 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <com.makeramen.roundedimageview.RoundedImageView
-           android:layout_width="match_parent"
-           android:layout_height="150dp"
-           android:background="@drawable/tunisia"
-           android:id="@+id/tv_tunisia"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/colorAccent"
-        android:id="@+id/layout_header"
-        android:alpha="0.7" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_date"
-        android:text="Monday 27"
-        android:textSize="18sp"
-        android:fontFamily="sans-serif"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_annotation_date"
-        android:text="th"
-        android:layout_toEndOf="@+id/tv_date"
-        android:textSize="12sp"
-        android:fontFamily="sans-serif"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText" />
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:layout_width="100dp"
-        android:layout_height="130dp"
-        android:id="@+id/tv_temp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        tools:ignore="ContentDescription" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="Partially couldy"
-        android:id="@+id/tv_cloud"
-        android:layout_alignBottom="@+id/tv_temp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        tools:ignore="HardcodedText" />
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="50dp"
-        android:background="@drawable/pin"
-        android:id="@+id/iv_pin"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_below="@+id/tv_date"
-        tools:ignore="ContentDescription" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/iv_pin"
-        android:layout_below="@+id/tv_date"
-        android:textStyle="bold"
-        android:text="Tunis"
-        android:id="@+id/tv_region_name"
-        android:textSize="24sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="17dp"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/iv_pin"
-        android:layout_below="@+id/tv_region_name"
-        android:text="Governerate"
-        android:textSize="16sp"
-        android:textAllCaps="true"
-        android:id="@+id/tv_region_description"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText" />
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_header"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginStart="16dp"
-        android:text="@string/la_une"
-        android:textStyle="bold"
-        android:id="@+id/tv_a_la_une"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"/>
-        <android.support.v7.widget.RecyclerView
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_a_la_une"
-            android:nestedScrollingEnabled="false"
-            android:id="@+id/rv_a_la_une"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rv_a_la_une"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginStart="16dp"
-            android:text="@string/mon_s_jour"
-            android:textStyle="bold"
-            android:id="@+id/tv_mon_sejour"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"/>
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:nestedScrollingEnabled="false"
-            android:layout_below="@+id/tv_mon_sejour"
-            android:id="@+id/rv_sejour"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rv_sejour"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginStart="16dp"
-            android:text="@string/les_incontournables"
-            android:textStyle="bold"
-            android:id="@+id/tv_incontournables"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"/>
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
-            android:layout_below="@+id/tv_incontournables"
-            android:id="@+id/rv_incontournables"/>
-    </RelativeLayout>
+            android:layout_height="match_parent">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/tv_tunisia"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/tunisia" />
+
+            <RelativeLayout
+                android:id="@+id/layout_header"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:alpha="0.7"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Monday 27"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_annotation_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@+id/tv_date"
+                android:fontFamily="sans-serif"
+                android:paddingTop="7dp"
+                android:text="th"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText" />
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/tv_temp"
+                android:layout_width="100dp"
+                android:layout_height="130dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_cloud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_temp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="-10dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Partially couldy"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/iv_pin"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tv_date"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/pin"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_region_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_date"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="17dp"
+                android:layout_toEndOf="@+id/iv_pin"
+                android:fontFamily="sans-serif-black"
+                android:text="Tunis"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_region_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_region_name"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/iv_pin"
+                android:fontFamily="sans-serif-medium"
+                android:text="Governerate"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/tv_a_la_une"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_header"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/la_une"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_a_la_une"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_a_la_une"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView
+                android:id="@+id/tv_mon_sejour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rv_a_la_une"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/mon_s_jour"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_sejour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_mon_sejour"
+                android:layout_marginStart="16dp"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView
+                android:id="@+id/tv_incontournables"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rv_sejour"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/les_incontournables"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_incontournables"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_incontournables"
+                android:nestedScrollingEnabled="false" />
+        </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

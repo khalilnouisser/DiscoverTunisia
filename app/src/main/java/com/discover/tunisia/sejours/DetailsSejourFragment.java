@@ -98,6 +98,7 @@ public class DetailsSejourFragment extends Fragment {
         // toolbar
         tvSejourTitle.setText(sejour.getTitle());
         toolbar.setNavigationIcon(R.drawable.ic_back);
+        Objects.requireNonNull(toolbar.getNavigationIcon()).setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +109,7 @@ public class DetailsSejourFragment extends Fragment {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if ((collapsingToolbar.getHeight() + verticalOffset) < (2 * ViewCompat.getMinimumHeight(collapsingToolbar))) {
+                if ((collapsingToolbar.getHeight() + verticalOffset) < (ViewCompat.getMinimumHeight(collapsingToolbar))) {
                     Objects.requireNonNull(toolbar.getNavigationIcon()).setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
                 } else {
                     Objects.requireNonNull(toolbar.getNavigationIcon()).setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);

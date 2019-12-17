@@ -12,25 +12,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.prolificinteractive.materialcalendarview.MaterialCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:mcv_selectionColor="@color/colorPrimary"
             app:mcv_tileHeight="40dp"
-            android:layout_marginBottom="16dp"
-            app:mcv_tileWidth="50dp" />
+            android:layout_marginBottom="0dp"
+            android:paddingBottom="0dp"
+            app:mcv_tileWidth="55dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_event"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/shape_blue_light_border_5dp"
@@ -44,17 +48,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="0dp"
+                android:paddingBottom="50dp"
                 android:background="@color/colorPrimary"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_height="50dp"
+                    android:textSize="16sp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginEnd="22dp"
                     android:gravity="center_vertical"
-                    android:paddingStart="16dp"
                     android:text="Useful numbers"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -63,9 +68,9 @@
                 <RelativeLayout
                     android:id="@+id/layout_call_police"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginEnd="22dp"
                     android:background="@drawable/shape_blue_light_border_5dp">
 
                     <ImageView
@@ -112,10 +117,10 @@
                 <RelativeLayout
                     android:id="@+id/layout_call_ambulance"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="22dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="22dp"
                     android:background="@drawable/shape_blue_light_border_5dp">
 
                     <ImageView
@@ -162,10 +167,10 @@
                 <RelativeLayout
                     android:id="@+id/layout_call_taxi"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="22dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="22dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/shape_blue_light_border_5dp">
 

@@ -9,12 +9,11 @@
 
 
     <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/rv_navigation"
-         />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-  <ImageView
+    <ImageView
       android:layout_width="24dp"
       android:layout_height="24dp"
       android:src="@drawable/ic_back"
@@ -28,6 +27,6 @@
       android:layout_height="50dp"
       android:layout_marginTop="14dp"
       android:layout_centerHorizontal="true"
-      android:src="@drawable/inspring_logo"
+      android:src="@drawable/white_logo"
       tools:ignore="ContentDescription" />
 </RelativeLayout>

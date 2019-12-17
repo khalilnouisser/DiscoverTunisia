@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.discover.tunisia.R;
 import com.google.gson.Gson;
 import com.makeramen.roundedimageview.RoundedImageView;
