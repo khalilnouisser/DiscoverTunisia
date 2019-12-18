@@ -423,14 +423,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                         selectedPostion = i;
                         Handler handler = new Handler();
-                        handler.postDelayed(() -> {
+                        /*handler.postDelayed(() -> {
                             try {
                                 rvPlaces.smoothScrollToPosition(selectedPostion);
                                 openPlaceDialog(displayedPlaces.get(selectedPostion));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                        }, 250);
+                        }, 250);*/
 
 
 

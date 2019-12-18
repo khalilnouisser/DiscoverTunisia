@@ -77,6 +77,8 @@ tools:context=".incontournables.IncontournableFragment"
            android:layout_marginBottom="20dp"
            android:textColor="@color/black"
            android:lineSpacingExtra="8sp"
+           android:justificationMode="inter_word"
+           android:gravity="fill_horizontal|end"
            android:textSize="14sp"/>
         <RelativeLayout
             android:layout_width="match_parent"

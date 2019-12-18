@@ -69,6 +69,8 @@ public class PlaceSmallHorizontalAdapter extends RecyclerView.Adapter<PlaceSmall
         }
     }
 
+
+
     private void openPlaceDialog(Place place) {
 
         final View dialogFiltre =  LayoutInflater.from(context).inflate(
@@ -103,6 +105,7 @@ public class PlaceSmallHorizontalAdapter extends RecyclerView.Adapter<PlaceSmall
             tv_description.setVisibility(View.GONE);
         }
 
+
         if (place.getAdress() != null && !place.getAdress().equals("")) {
             tv_adresse.setText(place.getAdress());
         } else {
@@ -120,8 +123,8 @@ public class PlaceSmallHorizontalAdapter extends RecyclerView.Adapter<PlaceSmall
         if (place.getPhone() != null && !place.getPhone().equals("")) {
             tv_phone.setText(place.getPhone());
         } else {
-            //label_phone.setVisibility(View.GONE);
-            //tv_phone.setVisibility(View.GONE);
+            label_phone.setVisibility(View.GONE);
+            tv_phone.setVisibility(View.GONE);
         }
 
 

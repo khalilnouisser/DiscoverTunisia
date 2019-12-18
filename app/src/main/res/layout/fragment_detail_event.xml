@@ -78,6 +78,8 @@
                 android:lineSpacingExtra="8sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="15dp"
+                android:justificationMode="inter_word"
+                android:gravity="fill_horizontal|end"
                 />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

@@ -13,6 +13,7 @@
         android:id="@+id/rv_navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tabDots"
         android:layout_alignParentBottom="true"
@@ -20,7 +21,8 @@
         android:layout_height="wrap_content"
         app:tabBackground="@drawable/tab_navigation"
         app:tabGravity="center"
-        android:background="@color/white"
+        app:tabTextColor="@color/gray"
+        app:tabSelectedTextColor="@color/white"
         app:tabIndicatorHeight="0dp"/>
 
     <ImageView

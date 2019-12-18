@@ -52,6 +52,8 @@
                     android:text="Il y a tant de choses à découvrir dans chaque région de la Tunisie : des paysages contrastés, un littoral long de 1250 km parsemé d'îles et d'archipels, des traditions et coutumes diverses, un riche héritage historique.\nNous vous présentons ces régions en les répartissant, par commodité, en trois zones :\nle nord, le centre et le sud."
                     android:textColor="@color/white"
                     android:textSize="15sp"
+                    android:justificationMode="inter_word"
+                    android:gravity="fill_horizontal|end"
                     tools:ignore="HardcodedText" />
 
                 <TextView
