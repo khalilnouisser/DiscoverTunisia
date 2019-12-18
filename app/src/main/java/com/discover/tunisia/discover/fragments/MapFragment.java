@@ -201,12 +201,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             tv_description.setVisibility(View.GONE);
         }
 
-        if (place.getDescription() != null && !place.getDescription().equals("")) {
-            tv_description.setText(place.getDescription());
-        } else {
-            label_description.setVisibility(View.GONE);
-            tv_description.setVisibility(View.GONE);
-        }
 
         if (place.getAdress() != null && !place.getAdress().equals("")) {
             tv_adresse.setText(place.getAdress());
