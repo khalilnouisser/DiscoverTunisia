@@ -5,6 +5,7 @@
     android:layout_marginBottom="20dp"
     android:layout_marginStart="0dp"
     android:layout_marginEnd="0dp"
+    app:layout_constraintCircleRadius="6dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -16,6 +17,15 @@
         android:src="@drawable/plage"
         app:riv_corner_radius="6dp" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignEnd="@+id/iv_tunis_tour"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="0dp"
+        android:alpha="0.4"
+        android:background="@color/black"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,12 +36,5 @@
             android:textSize="18sp"
             android:text="@string/tour_de_tunisie_des_plages"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignEnd="@+id/iv_tunis_tour"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="0dp"
-        android:alpha="0.2"
-        android:background="@color/black" />
+
     </RelativeLayout>

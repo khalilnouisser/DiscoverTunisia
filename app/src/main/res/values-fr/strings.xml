@@ -1,5 +1,5 @@
 <resources>
-    <string name = "app_name"> Découvrir </string>
+    <string name = "app_name"> Discover Tunisia </string>
         <string name = "hello_blank_fragment"> Bonjour fragment vierge </string>
         <string name = "email"> E-mail </string>
         <string name = "hiden_password"> ******* </string>
@@ -14,7 +14,7 @@
         <string name = "continue_"> Continuer </string>
         <string name = "view_terms_and_conditions"> Afficher les conditions générales </string>
         <string name = "back" translatable = "true"> retour </string>
-        <string name = "la_une" translatable = "true"> En vedette </string>
+        <string name = "la_une" translatable = "true"> À la une </string>
         <string name = "actualit_s" translatable = "true"> Actualités </string>
         <string name = "mon_s_jour" translatable = "true"> Mon séjour </string>
 

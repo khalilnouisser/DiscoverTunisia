@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             app:mcv_selectionColor="@color/colorPrimary"
             app:mcv_tileHeight="40dp"
-            app:mcv_tileWidth="55dp" />
+            android:layout_marginBottom="10dp"
+            app:mcv_tileWidth="50dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

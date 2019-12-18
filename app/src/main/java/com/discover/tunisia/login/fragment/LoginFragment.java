@@ -138,7 +138,8 @@ public class LoginFragment extends Fragment {
 
         };
         for (Locale locale : locales) {
-            langues.add(new Langue(locale.getDisplayLanguage(locale), false, locale));
+            String lang = locale.getDisplayLanguage(locale).substring(0, 1).toUpperCase() + locale.getDisplayLanguage(locale).substring(1);
+            langues.add(new Langue(lang, false,locale));
         }
         try {
             LocaleHelper.onAttach(getContext());

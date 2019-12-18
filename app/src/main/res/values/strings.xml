@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Discover</string>
+    <string name="app_name">Discover Tunisia</string>
     <string name="facebook_app_id" translatable="false">625561951606349</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb625561951606349</string>
 
@@ -45,8 +45,8 @@
     <string name="visit_virtuel" translatable="true">Virtual visit</string>
     <string name="empty_data" translatable="true">Empty data</string>
     <string name="connect" translatable="true">Connect</string>
-    <string name="city">Cité</string>
-    <string name="phone">Téléphone</string>
-    <string name="adress">Adresse</string>
-    <string name="description">Description</string>
+    <string name="city" translatable="false">Cité</string>
+    <string name="phone" translatable="false">Téléphone</string>
+    <string name="adress" translatable="false">Adresse</string>
+    <string name="description" translatable="false">Description</string>
 </resources>

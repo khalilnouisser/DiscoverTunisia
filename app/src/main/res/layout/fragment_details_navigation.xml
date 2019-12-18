@@ -27,6 +27,6 @@
       android:layout_height="50dp"
       android:layout_marginTop="14dp"
       android:layout_centerHorizontal="true"
-      android:src="@drawable/inspring_logo"
+      android:src="@drawable/white_logo"
       tools:ignore="ContentDescription" />
 </RelativeLayout>

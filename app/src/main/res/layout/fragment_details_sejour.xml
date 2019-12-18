@@ -54,19 +54,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="20dp"
             android:paddingLeft="16dp"
+            android:paddingTop="20dp"
             android:paddingRight="16dp"
             android:paddingBottom="40dp">
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_details_sejour"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/rv_details_sejour"
                 android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,6 +75,7 @@
         android:id="@+id/tv_sejour_title"
         android:layout_marginTop="16dp"
         android:textSize="18sp"
+        android:lineSpacingExtra="8sp"
         android:textStyle="bold"
         android:textColor="@color/white"/>
 </android.support.design.widget.CoordinatorLayout>

@@ -2,6 +2,8 @@ package com.discover.tunisia.discover.fragments;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -39,6 +41,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -88,6 +91,10 @@ public class HomeFragment extends Fragment {
     RecyclerView rvIncontournables;
     @BindView(R.id.tv_cloud)
     TextView tvCloud;
+    @BindView(R.id.tv_temp_c)
+    TextView tvTempC;
+    @BindView(R.id.main_header)
+    RelativeLayout rlMainHeader;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -104,6 +111,10 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, view);
         initWeither();
+        rlMainHeader.setOnClickListener(v -> {
+            Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse("http://www.meteo.tn/default.html") );
+            startActivity( browse );
+        });
         initEvents();
         initSerjour();
         initIncontournable();
@@ -129,6 +140,7 @@ public class HomeFragment extends Fragment {
                         if (weither.getCurrent().getWeather_descriptions() != null) {
                             tvCloud.setText(weither.getCurrent().getWeather_descriptions().get(0));
                         }
+                        tvTempC.setText(String.valueOf(weither.getCurrent().getTemperature()));
                         int resource = R.drawable._001_rain_3;
 
                         if(weither.getCurrent().getWeather_code()==113)
@@ -210,7 +222,10 @@ public class HomeFragment extends Fragment {
                                 @SuppressLint("SimpleDateFormat") DateFormat dayFormate=new SimpleDateFormat("EEEE");
                                 String dayFromDate=dayFormate.format(date);
                                 String day = (String) android.text.format.DateFormat.format("dd", date);
-                                tvDate.setText(dayFromDate+" "+day);
+                                String month = (String) android.text.format.DateFormat.format("MM", date);
+                                int year = Calendar.getInstance().get(Calendar.YEAR);
+                                tvDate.setText(dayFromDate);
+                                tvAnnotationDate.setText(day + "/" + month + "/"+ year);
 
                             } catch (ParseException e) {
                                 e.printStackTrace();
