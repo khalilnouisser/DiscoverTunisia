@@ -45,4 +45,8 @@
     <string name="visit_virtuel" translatable="true">Virtual visit</string>
     <string name="empty_data" translatable="true">Empty data</string>
     <string name="connect" translatable="true">Connect</string>
+    <string name="city">Cité</string>
+    <string name="phone">Téléphone</string>
+    <string name="adress">Adresse</string>
+    <string name="description">Description</string>
 </resources>
