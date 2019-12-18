@@ -3,9 +3,9 @@ package com.discover.tunisia.navigations;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +13,6 @@ import android.widget.ImageView;
 
 import com.discover.tunisia.R;
 import com.discover.tunisia.config.Utils;
-import com.discover.tunisia.discover.entities.Event;
-import com.discover.tunisia.navigations.adapters.NavigationAdapter;
 import com.discover.tunisia.navigations.adapters.NavigationPagerAdapter;
 import com.discover.tunisia.navigations.entities.Navigation;
 import com.discover.tunisia.services.RetrofitServiceFacotry;
@@ -46,15 +44,17 @@ public class DetailsNavigationFragment extends Fragment {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rv_navigation)
-    android.support.v4.view.ViewPager rvNavigation;
+    ViewPager rvNavigation;
     Unbinder unbinder;
+    @BindView(R.id.tabDots)
+    TabLayout tabDots;
 
     public DetailsNavigationFragment() {
         // Required empty public constructor
     }
 
     public static Fragment newInstance() {
-        return  new DetailsNavigationFragment();
+        return new DetailsNavigationFragment();
     }
 
 
@@ -66,14 +66,8 @@ public class DetailsNavigationFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         try {
-            ivBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Objects.requireNonNull(getActivity()).finish();
-                }
-            });
-        }catch (Exception ignored)
-        {
+            ivBack.setOnClickListener(v -> Objects.requireNonNull(getActivity()).finish());
+        } catch (Exception ignored) {
 
         }
         try {
@@ -90,19 +84,16 @@ public class DetailsNavigationFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
 
-                if (response.code() == 200)
-                {
+                if (response.code() == 200) {
                     try {
                         assert response.body() != null;
                         JSONObject object = new JSONObject(response.body().string());
                         JSONArray array = object.optJSONArray("data");
-                        if(array!=null)
-                        {
+                        if (array != null) {
                             Gson gson = Utils.getGsonInstance();
                             List<Navigation> navigations = new ArrayList<>();
-                            for (int i = 0;i<array.length();i++)
-                            {
-                                Navigation navigation = gson.fromJson(array.get(i).toString(),Navigation.class);
+                            for (int i = 0; i < array.length(); i++) {
+                                Navigation navigation = gson.fromJson(array.get(i).toString(), Navigation.class);
                                 navigations.add(navigation);
                             }
                             initAdapter(navigations);
@@ -124,8 +115,9 @@ public class DetailsNavigationFragment extends Fragment {
     }
 
     private void initAdapter(List<Navigation> navigations) {
-        NavigationPagerAdapter adapter = new NavigationPagerAdapter(getContext(),navigations);
+        NavigationPagerAdapter adapter = new NavigationPagerAdapter(getContext(), navigations);
         rvNavigation.setAdapter(adapter);
+        tabDots.setupWithViewPager(rvNavigation, true);
     }
 
     @Override

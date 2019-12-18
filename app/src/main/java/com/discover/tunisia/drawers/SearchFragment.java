@@ -53,7 +53,7 @@ public class SearchFragment extends Fragment {
     @BindView(R.id.rvData)
     RecyclerView rvData;
     Unbinder unbinder;
-    Call<ResponseBody> call;
+    Call<ResponseBody> callElement;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -92,32 +92,32 @@ public class SearchFragment extends Fragment {
     }
 
     private void callData(String toString) {
-        if(call == null)
-        {
-            call = RetrofitServiceFacotry.getServiceApiClient().search(toString);
-            call.enqueue(new Callback<ResponseBody>() {
+        if(callElement == null)
+        {   List<Search> searches = new ArrayList<>();
+            callElement = RetrofitServiceFacotry.getServiceApiClient().search(toString);
+            callElement.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                    callElement = null;
                     if(response.code() == 200)
                     {
                         try {
                             Gson gson = Utils.getGsonInstance();
                             assert response.body() != null;
                             JSONArray array = new JSONArray(response.body().string());
-                            if(array != null)
+                            if(array.length() > 0)
                             {
-                                List<Search> searches = new ArrayList<>();
                                 for(int i = 0; i<array.length();i++)
                                 {
                                     Search search = gson.fromJson(array.get(i).toString(),Search.class);
                                     searches.add(search);
                                 }
-                                initAdapter(searches);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
+                    initAdapter(searches);
                 }
 
                 @Override
